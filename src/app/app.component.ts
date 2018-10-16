@@ -6,6 +6,7 @@ import {auth, User} from 'firebase';
 import {Observable} from 'rxjs';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {filter} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,10 @@ export class AppComponent {
   private _user: User;
   private dbData: Observable<any>;
 
-  constructor(private tmdb: TmdbService, public anAuth: AngularFireAuth, private db: AngularFireDatabase) {
+  constructor(private tmdb: TmdbService,
+              public anAuth: AngularFireAuth,
+              private db: AngularFireDatabase,
+              private router: Router) {
     this.anAuth.user.pipe(filter( u => !!u )).subscribe( u => {
       this._user = u;
       const listsPath = `lists/${u.uid}`;

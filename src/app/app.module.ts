@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import {TmdbService} from './tmdb.service';
@@ -16,6 +17,10 @@ import { FilmComponent } from './film/film.component';
 import { ListeFilmsComponent } from './liste-films/liste-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 
+
+const appRoutes: Routes = [
+  {path: 'search', component: ListeFilmsComponent}
+]
 
 @NgModule({
   declarations: [
@@ -34,7 +39,11 @@ import { RechercheComponent } from './recherche/recherche.component';
     NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: false}
+    )
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent]

@@ -1,3 +1,9 @@
+<header>
+  <app-recherche></app-recherche>
+</header>
+
+<router-outlet></router-outlet>
+
 <h1>TMDB + Firebase</h1>
 <nav *ngIf="user">
   <label>{{user.displayName}}</label>
@@ -9,7 +15,6 @@
   <button (click)="login()">Connection via Google</button>
 </nav>
 
-<app-recherche></app-recherche>
 
 <hr/>
 <pre *ngIf="lists">

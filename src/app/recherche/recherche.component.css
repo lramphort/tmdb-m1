@@ -1,0 +1,14 @@
+#searchBar {
+  border-radius: 10px 0 0 10px;
+  padding:0.2cm;
+  font-size:1cm;
+  color:black;
+}
+button {
+  border-radius: 0 10px 10px 0;
+  padding:0.2cm;
+  padding-left:0.5cm;
+  padding-right:0.5cm;
+  font-size:1cm;
+  color:black;
+}

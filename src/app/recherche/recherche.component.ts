@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {TmdbService} from '../tmdb.service';
 import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-recherche',
   templateUrl: './recherche.component.html',
@@ -10,19 +12,14 @@ import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 export class RechercheComponent implements OnInit {
   @Input() valeurRecherchee: string;
   listeFilmsRecherches: SearchMovieResponse;
-  constructor(private tmdb: TmdbService) { }
+  constructor(private tmdb: TmdbService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    this.tmdb.searchMovie({
-      language: "fr-FR",
-      query: this.valeurRecherchee
-    }).then(
-      res => {
-        this.listeFilmsRecherches = res;
-      }
-    );
+
+    this.router.navigate(['search'], {queryParams: {searchText: this.valeurRecherchee}} );
+
   }
 }
