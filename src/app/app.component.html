@@ -9,6 +9,8 @@
   <button (click)="login()">Connection via Google</button>
 </nav>
 
+<app-recherche></app-recherche>
+
 <hr/>
 <pre *ngIf="lists">
   {{lists | async | json}}
