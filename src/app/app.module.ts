@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {TmdbService} from './tmdb.service';
@@ -11,10 +12,17 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { FilmComponent } from './film/film.component';
+import { ListeFilmsComponent } from './liste-films/liste-films.component';
+import { RechercheComponent } from './recherche/recherche.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilmComponent,
+    ListeFilmsComponent,
+    RechercheComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,8 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent]

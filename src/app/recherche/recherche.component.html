@@ -1,0 +1,9 @@
+<form (submit)="onSubmit()">
+  <input type="text" [(ngModel)]="valeurRecherchee" placeholder="Rechercher un flim"
+         name="first">
+  <button type="submit">Chercher</button>
+</form>
+
+<ul *ngIf="listeFilmsRecherches">
+  <li *ngFor="let movie of listeFilmsRecherches.results"><a href="/films/{{movie.id}}">{{movie.title}}</a></li>
+</ul>
