@@ -4,11 +4,11 @@ import {TmdbService} from '../tmdb.service';
 import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 
 @Component({
-  selector: 'app-liste-films',
-  templateUrl: './liste-films.component.html',
-  styleUrls: ['./liste-films.component.css']
+  selector: 'app-liste-resultats-films',
+  templateUrl: './liste-resultats-films.component.html',
+  styleUrls: ['./liste-resultats-films.component.css']
 })
-export class ListeFilmsComponent implements OnInit {
+export class ListeResultatsFilmsComponent implements OnInit {
   currentSearchRes: SearchMovieResponse;
   constructor(private route: ActivatedRoute, private tmdb: TmdbService) { }
 

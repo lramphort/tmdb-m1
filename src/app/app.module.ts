@@ -14,13 +14,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
 import { FilmComponent } from './film/film.component';
-import { ListeFilmsComponent } from './liste-films/liste-films.component';
+import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 
 
 
 const appRoutes: Routes = [
-  {path: 'search', component: ListeFilmsComponent},
+  {path: 'search', component: ListeResultatsFilmsComponent},
   {path: 'movie', component: FilmComponent}
 ];
 
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     FilmComponent,
-    ListeFilmsComponent,
+    ListeResultatsFilmsComponent,
     RechercheComponent
   ],
   imports: [
