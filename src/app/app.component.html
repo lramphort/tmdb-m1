@@ -1,8 +1,21 @@
-<header>
-  <app-recherche></app-recherche>
-</header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" ([opened])="sideNavVisible">
+    <app-lists-manager></app-lists-manager>
+  </mat-sidenav>
 
-<router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <header>
+      <button mat-fab (click)="sidenav.toggle();">
+        <mat-icon>list</mat-icon>
+      </button>
+      <app-recherche></app-recherche>
+      <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
+    </header>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 
 <!--
 Laissé à titre d'exemple

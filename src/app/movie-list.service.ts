@@ -40,6 +40,8 @@ export class MovieListService {
   deleteList (liste: String) {
     console.log ("hasta la vista, baby !" +  liste);
   }
+
+
 }
 
 

@@ -11,11 +11,12 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule} from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { ListsManagerComponent } from './lists-manager/lists-manager.component';
 
 
 
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     AppComponent,
     FilmComponent,
     ListeResultatsFilmsComponent,
-    RechercheComponent
+    RechercheComponent,
+    ListsManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +40,11 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
+    MatIconModule,
+    MatSidenavModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
