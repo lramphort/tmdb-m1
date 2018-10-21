@@ -21,7 +21,7 @@ import { RechercheComponent } from './recherche/recherche.component';
 
 const appRoutes: Routes = [
   {path: 'search', component: ListeResultatsFilmsComponent},
-  {path: 'movie', component: FilmComponent}
+  {path: 'movie/:id', component: FilmComponent}
 ];
 
 @NgModule({

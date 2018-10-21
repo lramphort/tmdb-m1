@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TmdbService} from '../tmdb.service';
 import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 
@@ -10,7 +10,9 @@ import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 })
 export class ListeResultatsFilmsComponent implements OnInit {
   currentSearchRes: SearchMovieResponse;
-  constructor(private route: ActivatedRoute, private tmdb: TmdbService) { }
+  constructor(private routeur: Router,
+              private route: ActivatedRoute,
+              private tmdb: TmdbService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -20,7 +22,6 @@ export class ListeResultatsFilmsComponent implements OnInit {
       }).then(
         res => {
 
-          console.log("Essai");
           this.currentSearchRes = res;
         }
       );

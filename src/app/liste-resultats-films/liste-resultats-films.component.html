@@ -1,5 +1,14 @@
-<ul *ngIf="currentSearchRes" >
-  <li *ngFor="let movie of currentSearchRes.results"><a href="/films/{{movie.id}}">{{movie.title}}</a></li>
+<ul *ngIf="currentSearchRes">
+  <li *ngFor="let m of currentSearchRes.results">
+    <a routerLink="/movie/{{m.id}}">
+      <mat-card>
+        <mat-card-header>
+          {{m.title}}
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </li>
+
 </ul>
 
 

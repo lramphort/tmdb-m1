@@ -23,8 +23,10 @@ export class AppComponent {
               private db: AngularFireDatabase,
               private router: Router) {
 
+    tmdb.init('25ea93320b0ede2eb2ce7b2661886a0e');
 
-    this.anAuth.user.pipe(filter( u => !!u )).subscribe( u => {
+
+    /*this.anAuth.user.pipe(filter( u => !!u )).subscribe( u => {
       this._user = u;
       const listsPath = `lists/${u.uid}`;
       const lists = db.list(listsPath);
@@ -36,7 +38,7 @@ export class AppComponent {
           .getMovie(13)
           .then( (m: MovieResponse) => console.log('Movie 13:', this._movie = m) )
           .catch( err => console.error('Error getting movie:', err) ),
-      1000 );
+      1000 );*/
 
   }
 

@@ -22,12 +22,12 @@ export class FilmComponent implements OnInit {
   synopsis: string;
   poster_path: string;
   film: MovieResponse;
-  //acteurs: ;
+  // acteurs: ;
 
 
   constructor(private route: ActivatedRoute, private tmdb: TmdbService) {
-    this.movieId = 335983;
-    this.tmdb.getMovie(this.movieId).then(res =>{
+    this.movieId = +this.route.snapshot.paramMap.get('id'); // 335983;
+    this.tmdb.getMovie(this.movieId).then(res => {
       this.title = res.title;
       this.annee = res.release_date;
       this.status     = res.status;
@@ -39,7 +39,7 @@ export class FilmComponent implements OnInit {
       this.pays       = res.production_countries;
       this.langue     = res.spoken_languages;
       this.poster_path = res.poster_path;
-      //this.acteurs  = res. ?????? ;
+      // this.acteurs  = res. ?????? ;
     });
   }
 
