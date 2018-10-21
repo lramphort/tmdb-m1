@@ -22,6 +22,8 @@ export class AppComponent {
               public anAuth: AngularFireAuth,
               private db: AngularFireDatabase,
               private router: Router) {
+
+
     this.anAuth.user.pipe(filter( u => !!u )).subscribe( u => {
       this._user = u;
       const listsPath = `lists/${u.uid}`;

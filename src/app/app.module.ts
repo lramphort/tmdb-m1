@@ -12,15 +12,17 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule} from '@angular/material';
 import { FilmComponent } from './film/film.component';
 import { ListeFilmsComponent } from './liste-films/liste-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 
 
+
 const appRoutes: Routes = [
-  {path: 'search', component: ListeFilmsComponent}
-]
+  {path: 'search', component: ListeFilmsComponent},
+  {path: 'movie', component: FilmComponent}
+];
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatCardModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,

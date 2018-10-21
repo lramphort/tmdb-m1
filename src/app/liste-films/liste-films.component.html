@@ -1,3 +1,5 @@
-<ul *ngIf="currentSearchRes">
+<ul *ngIf="currentSearchRes" >
   <li *ngFor="let movie of currentSearchRes.results"><a href="/films/{{movie.id}}">{{movie.title}}</a></li>
 </ul>
+
+

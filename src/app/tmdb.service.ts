@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MovieQuery, MovieResponse} from './tmdb-data/Movie';
+import {MovieCreditsResponse, MovieQuery, MovieResponse} from './tmdb-data/Movie';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {PersonQuery, PersonResponse} from './tmdb-data/Person';
 import {SearchMovieQuery, SearchMovieResponse} from './tmdb-data/searchMovie';
@@ -51,6 +51,12 @@ export class TmdbService {
   async searchMovie(query: SearchMovieQuery): Promise<SearchMovieResponse> {
     const url = `${tmdbApi}/search/movie`;
     const res = await this.get<SearchMovieResponse>(url, query);
+    return res.body;
+  }
+
+  async getMovieCredit(id: number): Promise<MovieCreditsResponse> {
+    const url = `${tmdbApi}/movieCredits/${id}`;
+    const res = await this.get<MovieCreditsResponse>(url, null);
     return res.body;
   }
 
