@@ -1,6 +1,26 @@
-<h2><mat-icon>theaters</mat-icon> Listes de films <mat-icon>add</mat-icon></h2>
+<h2><mat-icon>theaters</mat-icon> Listes de films <button (click)="addingList = true" mat-icon-button><mat-icon>add</mat-icon></button></h2>
 <ol>
-  <li>Nom liste <mat-icon>create</mat-icon><mat-icon>delete</mat-icon></li>
-  <li>Nom liste <mat-icon>create</mat-icon><mat-icon>delete</mat-icon></li>
-  <li>Nom liste <mat-icon>create</mat-icon><mat-icon>delete</mat-icon></li>
+  <li>Nom liste
+    <button mat-icon-button>
+      <mat-icon>create</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+  <li>Nom liste
+    <button mat-icon-button>
+      <mat-icon>create</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </li>
+  <li *ngIf="addingList">
+    <form (submit)="createList()">
+      <mat-form-field>
+        <input [(ngModel)]="newListe" matInput placeholder="Titre 1">
+      </mat-form-field>
+    </form>
+  </li>
 </ol>

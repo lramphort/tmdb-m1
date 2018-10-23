@@ -12,6 +12,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatIconModule,
     MatSidenavModule,
+    MatFormFieldModule,
     FormsModule,
     RouterModule.forRoot(
       appRoutes,
