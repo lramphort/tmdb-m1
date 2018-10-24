@@ -11,7 +11,15 @@
       <app-recherche></app-recherche>
       <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
     </header>
-
+    <nav *ngIf="user">
+      <label>{{user.displayName}}</label>
+      <img [src]="user.photoURL" />
+      <button (click)="logout()">Déconnection</button>
+      {{user.uid}}
+    </nav>
+    <nav *ngIf="!user">
+      <button (click)="login()">Connection via Google</button>
+    </nav>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

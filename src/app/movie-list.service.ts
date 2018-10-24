@@ -2,23 +2,36 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase, AngularFireList, PathReference} from '@angular/fire/database';
 import {ListStructure} from './dataTypes/ListStructure';
+import {filter} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {User} from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieListService {
 
-  idUtilisateur: String;
-  lists: AngularFireList<ListStructure>;
+  private user: Observable<User>;
+  private lists: AngularFireList<ListStructure>;
 
-  constructor(public onAuth: AngularFireAuth,
+  constructor(public anAuth: AngularFireAuth,
               private db: AngularFireDatabase) {
-    this.onAuth.user.subscribe( u => {
-      this.idUtilisateur = u.uid;
-      const listsPath = `lists/${this.idUtilisateur}`;
-      this.lists = db.list(listsPath);
-    }) ; }
+    this.user = this.anAuth.user;
 
+    this.user.subscribe( u => {
+
+      if (u) {
+        this.lists = db.list(`users/${u.uid}/lists`);
+      } else {
+        this.lists = undefined;
+      }
+
+      }) ;
+  }
+
+  getUser(): Observable<User> {
+    return this.user;
+  }
 
   addMovie(liste: string, idMovie: number) {
     console.log ("truc tout pourrave - addMovie" + idMovie + liste);
@@ -32,7 +45,15 @@ export class MovieListService {
   addList (liste: string) {
     const l: ListStructure = {name: liste};
     this.lists.push(l);
-    console.log ("truc tout pourrave - addList" + liste);
+  }
+
+  getUserLists(): Observable<ListStructure[]> {
+    return this.lists.valueChanges();
+  }
+
+  test() {
+    console.log("Testr");
+
   }
 
   renameList (liste: string, newName: string) {
