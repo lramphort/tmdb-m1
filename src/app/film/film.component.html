@@ -1,15 +1,47 @@
-<div>
-  <img src="{{movie.poster_path}}">
-  <h1>{{movie.title}}</h1>
-  <ul>
-    <li> Année :                    {{annee}} </li>
-    <li> Status :                   {{status}} </li>
-    <li> Compagnie de production :  {{compagnie}} </li>
-    <li> Langue :                   {{langue}} </li>
-    <li> Revenue :                  {{revenue}} </li>
-    <li> Budget :                   {{bugdet}} </li>
-    <!--<li> Acteurs :                  {{acteurs}} </li>-->
-    <li> Synopsis :                 {{synopsis}} </li>
+<div id="Global" *ngIf="movieId">
 
-  </ul>
+  <div id="gauche">
+      <div id="gauche">
+        <img [src]="getPath(poster_path)" />
+        <button mat-icon-button id="centre">
+          <mat-icon aria-label="plus icon">add</mat-icon>
+        </button>
+      </div>
+      <div id="droite">
+        <button mat-icon-button id="centre">
+          <mat-icon aria-label="plus icon">delete</mat-icon>
+        </button>
+      </div>
+  </div>
+
+
+
+  <div id="droite">
+      <h1>{{title}}</h1>
+      <ul>
+        <li> Année :                    {{annee}} </li>
+        <li> Status :                   {{status}} </li>
+        <li> Compagnies de production :
+            <ng-container *ngFor="let cp of compagnies">
+              {{cp.name}} ,
+            </ng-container>
+        </li>
+        <li> Langues :
+          <ng-container *ngFor="let l of langues">
+            {{l.name}}  ,
+          </ng-container>
+        </li>
+        <li> Revenue :                  {{revenue}} </li>
+        <li> Budget :                   {{bugdet}} </li>
+        <!--
+        <li> Acteurs :
+            <ng-container *ngFor="let a of acteurs">
+              {{a.name}} ,
+            </ng-container>
+        </li>
+        -->
+        <li> Synopsis :                 {{synopsis}} </li>
+
+      </ul>
+  </div>
 </div>

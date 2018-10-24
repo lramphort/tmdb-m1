@@ -1,0 +1,22 @@
+div {
+  color: #FFF;
+  font: 14px Verdana, sans-serif;
+}
+#Global #gauche {
+  float:left;
+  width:40%;
+}
+#Global #droite {
+  margin-left:40%
+}
+ul {
+  line-height:200%
+}
+#droite #centre {
+  display: block;
+  margin : auto;
+}
+#gauche #centre {
+  display: block;
+  margin : auto;
+}

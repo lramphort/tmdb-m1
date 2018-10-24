@@ -14,9 +14,9 @@ export class FilmComponent implements OnInit {
   annee: string;
   genre: MovieGenre[];
   status: string;
-  compagnie: ProductionCompany[];
+  compagnies: ProductionCompany[];
   pays: ProductionCountry[];
-  langue: SpokenLanguage[];
+  langues: SpokenLanguage[];
   revenue: number;
   bugdet: number;
   synopsis: string;
@@ -26,7 +26,7 @@ export class FilmComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private tmdb: TmdbService) {
-    this.movieId = +this.route.snapshot.paramMap.get('id'); // 335983;
+    this.movieId = +this.route.snapshot.paramMap.get('id');
     this.tmdb.getMovie(this.movieId).then(res => {
       this.title = res.title;
       this.annee = res.release_date;
@@ -35,9 +35,9 @@ export class FilmComponent implements OnInit {
       this.bugdet     = res.budget;
       this.synopsis   = res.overview;
       this.genre      = res.genres;
-      this.compagnie  = res.production_companies;
+      this.compagnies  = res.production_companies;
       this.pays       = res.production_countries;
-      this.langue     = res.spoken_languages;
+      this.langues    = res.spoken_languages;
       this.poster_path = res.poster_path;
       // this.acteurs  = res. ?????? ;
     });
@@ -47,5 +47,8 @@ export class FilmComponent implements OnInit {
 
   }
 
+  getPath(path: string): string {
+    return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
+  }
 
 }
