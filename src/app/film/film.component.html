@@ -1,22 +1,47 @@
 <div id="Global" *ngIf="movieId">
 
-  <div id="gauche">
-      <div id="gauche">
-        <img [src]="getPath(poster_path)" />
-        <button mat-icon-button id="centre">
-          <mat-icon aria-label="plus icon">add</mat-icon>
-        </button>
+  <div class="gauche">
+      <div><img [src]="getPath(poster_path)" /></div>
+      <div>
+          <div class="gauche">
+            <button *ngIf="movieId" mat-icon-button class="centre">
+              <mat-icon aria-label="plus icon">add</mat-icon>
+              <!-- tester si film appart a une liste et si oui metre une autre icon-->
+              <!-- si clique, afficher pop up avec liste des films, -->
+              <!-- apres click sur une liste, fonction ajouter film a la liste -->
+            </button>
+          </div>
+
+          <div class="droite">
+            <button mat-icon-button class="centre">
+              <mat-icon aria-label="plus icon">delete</mat-icon>
+              <!-- fonction supprimer un film -->
+            </button>
+          </div>
       </div>
-      <div id="droite">
-        <button mat-icon-button id="centre">
-          <mat-icon aria-label="plus icon">delete</mat-icon>
-        </button>
+      <div>
+          <div class="rating">
+               <a href="#5" title="Donner 5 étoiles">☆</a>
+               <a href="#4" title="Donner 4 étoiles">☆</a>
+               <a href="#3" title="Donner 3 étoiles">☆</a>
+               <a href="#2" title="Donner 2 étoiles">☆</a>
+               <a href="#1" title="Donner 1 étoile">☆</a>
+          </div>
+          <div>
+                <!-- afficher la note du film -->
+          </div>
       </div>
+
+      <div>
+        <!-- ici mettre formulaire laisser un avis -->
+      </div>
+    <!-- ici mettre bouton gauche voir un avis -->
+    <!-- ici mettre bouton droite "ok !" = on submit du form -->
   </div>
 
 
 
-  <div id="droite">
+  <div class="droite">
       <h1>{{title}}</h1>
       <ul>
         <li> Année :                    {{annee}} </li>

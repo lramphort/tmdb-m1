@@ -2,21 +2,40 @@ div {
   color: #FFF;
   font: 14px Verdana, sans-serif;
 }
-#Global #gauche {
+.gauche {
   float:left;
-  width:40%;
+  width:50%;
 }
-#Global #droite {
-  margin-left:40%
+.droite {
+  margin-left:50%
 }
 ul {
   line-height:200%
 }
-#droite #centre {
+.centre {
   display: block;
   margin : auto;
 }
-#gauche #centre {
-  display: block;
-  margin : auto;
+img {
+  display:block;
+  width: 40%;
+  height: 40%;
+  margin-left:auto;
+  margin-right:auto;
+}
+.rating{
+  float:left;
+  width:50%;
+}
+.rating a {
+  float: right;
+  color: #aaa;
+  text-decoration: none;
+  font-size: 3em;
+  transition: color .4s;
+}
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: orange;
+  cursor: pointer;
 }

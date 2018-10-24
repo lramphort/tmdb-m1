@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TmdbService} from "../tmdb.service";
-import {MovieGenre, MovieResponse, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
+import {MovieGenre, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
 
 @Component({
   selector: 'app-film',
@@ -21,7 +21,6 @@ export class FilmComponent implements OnInit {
   bugdet: number;
   synopsis: string;
   poster_path: string;
-  film: MovieResponse;
   // acteurs: ;
 
 
@@ -46,6 +45,10 @@ export class FilmComponent implements OnInit {
   ngOnInit() {
 
   }
+
+ /* plus(liste de film l) {
+        ajoute le film a la liste passee en param
+  }*/
 
   getPath(path: string): string {
     return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
