@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,22 +12,29 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatDialogModule, MatInputModule} from '@angular/material';
 import { FilmComponent } from './film/film.component';
 import { ListeFilmsComponent } from './liste-films/liste-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+
 
 
 const appRoutes: Routes = [
-  {path: 'search', component: ListeFilmsComponent}
-]
+  {path: 'search', component: ListeFilmsComponent},
+  {path: 'creation-compte', component: CreationCompteComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     FilmComponent,
     ListeFilmsComponent,
-    RechercheComponent
+    RechercheComponent,
+    CreationCompteComponent,
+    CreationCompteDialogComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
@@ -39,13 +46,21 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}
     )
   ],
+  exports: [
+    MatFormFieldModule
+  ],
   providers: [TmdbService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreationCompteDialogComponent]
 })
 export class AppModule { }
