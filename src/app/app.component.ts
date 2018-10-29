@@ -18,10 +18,17 @@ export class AppComponent {
   private _user: User;
   private dbData: Observable<any>;
 
+  public sideNavVisible: boolean;
+
   constructor(private tmdb: TmdbService,
               public anAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router) {
+              private router: Router,
+              ) {
+    this.sideNavVisible = false;
+    tmdb.init('25ea93320b0ede2eb2ce7b2661886a0e');
+
+
     this.anAuth.user.pipe(filter( u => !!u )).subscribe( u => {
       this._user = u;
       const listsPath = `lists/${u.uid}`;
@@ -61,6 +68,12 @@ export class AppComponent {
 
   get lists(): Observable<any> {
     return this.dbData;
+  }
+
+  toggleSideNav() {
+
+    this.sideNavVisible = !this.sideNavVisible;
+    console.log(this.sideNavVisible);
   }
 }
 // /yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg

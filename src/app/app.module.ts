@@ -12,25 +12,31 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
-import { ListeFilmsComponent } from './liste-films/liste-films.component';
+import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 
+import { ListsManagerComponent } from './lists-manager/lists-manager.component';
+
 
 
 const appRoutes: Routes = [
-  {path: 'search', component: ListeFilmsComponent},
-  {path: 'creation-compte', component: CreationCompteComponent}
+  {path: 'search', component: ListeResultatsFilmsComponent},
+  {path: 'creation-compte', component: CreationCompteComponent},
+  {path: 'movie/:id', component: FilmComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     FilmComponent,
-    ListeFilmsComponent,
+    ListeResultatsFilmsComponent,
+    RechercheComponent,
+    ListsManagerComponent,
     RechercheComponent,
     CreationCompteComponent,
     CreationCompteDialogComponent,
@@ -51,6 +57,10 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCardModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatFormFieldModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}

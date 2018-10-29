@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListeFilmsComponent } from './liste-films.component';
+import { ListsManagerComponent } from './lists-manager.component';
 
-describe('ListeFilmsComponent', () => {
-  let component: ListeFilmsComponent;
-  let fixture: ComponentFixture<ListeFilmsComponent>;
+describe('ListsManagerComponent', () => {
+  let component: ListsManagerComponent;
+  let fixture: ComponentFixture<ListsManagerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListeFilmsComponent ]
+      declarations: [ ListsManagerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListeFilmsComponent);
+    fixture = TestBed.createComponent(ListsManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

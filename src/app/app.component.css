@@ -1,9 +1,22 @@
+mat-sidenav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("../assets/bkg.jpg ");
+}
 
+mat-sidenav {
+  padding:0 0.5cm 0 0.5cm;
+  background-color: #111;
+  color:white;
+}
 
 header {
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding:0.5cm;
 }
 

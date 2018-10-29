@@ -1,3 +1,72 @@
-<p>
-  film works!
-</p>
+<div id="Global" *ngIf="movieId">
+
+  <div class="gauche">
+      <div><img [src]="getPath(poster_path)" /></div>
+      <div>
+          <div class="gauche">
+            <button *ngIf="movieId" mat-icon-button class="centre">
+              <mat-icon aria-label="plus icon">add</mat-icon>
+              <!-- tester si film appart a une liste et si oui metre une autre icon-->
+              <!-- si clique, afficher pop up avec liste des films, -->
+              <!-- apres click sur une liste, fonction ajouter film a la liste -->
+            </button>
+          </div>
+
+          <div class="droite">
+            <button mat-icon-button class="centre">
+              <mat-icon aria-label="plus icon">delete</mat-icon>
+              <!-- fonction supprimer un film -->
+            </button>
+          </div>
+      </div>
+      <div>
+          <div class="rating">
+               <a href="#5" title="Donner 5 étoiles">☆</a>
+               <a href="#4" title="Donner 4 étoiles">☆</a>
+               <a href="#3" title="Donner 3 étoiles">☆</a>
+               <a href="#2" title="Donner 2 étoiles">☆</a>
+               <a href="#1" title="Donner 1 étoile">☆</a>
+          </div>
+          <div>
+                <!-- afficher la note du film -->
+          </div>
+      </div>
+
+      <div>
+        <!-- ici mettre formulaire laisser un avis -->
+      </div>
+    <!-- ici mettre bouton gauche voir un avis -->
+    <!-- ici mettre bouton droite "ok !" = on submit du form -->
+  </div>
+
+
+
+  <div class="droite">
+      <h1>{{title}}</h1>
+      <ul>
+        <li> Année :                    {{annee}} </li>
+        <li> Status :                   {{status}} </li>
+        <li> Compagnies de production :
+            <ng-container *ngFor="let cp of compagnies">
+              {{cp.name}} ,
+            </ng-container>
+        </li>
+        <li> Langues :
+          <ng-container *ngFor="let l of langues">
+            {{l.name}}  ,
+          </ng-container>
+        </li>
+        <li> Revenue :                  {{revenue}} </li>
+        <li> Budget :                   {{bugdet}} </li>
+        <!--
+        <li> Acteurs :
+            <ng-container *ngFor="let a of acteurs">
+              {{a.name}} ,
+            </ng-container>
+        </li>
+        -->
+        <li> Synopsis :                 {{synopsis}} </li>
+
+      </ul>
+  </div>
+</div>
