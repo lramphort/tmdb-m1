@@ -63,8 +63,11 @@ export class MovieListService {
   deleteList (liste: string) {
     console.log ("hasta la vista, baby !" +  liste);
   }
+  /*
+  isInList (liste : string, idMovie: number){
 
-
+  }
+  */
 }
 
 

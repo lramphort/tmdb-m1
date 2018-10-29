@@ -19,6 +19,7 @@ import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
+import { ActorComponent } from './actor/actor.component';
 
 
 
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     FilmComponent,
     ListeResultatsFilmsComponent,
     RechercheComponent,
-    ListsManagerComponent
+    ListsManagerComponent,
+    ActorComponent
   ],
   imports: [
     BrowserModule,
