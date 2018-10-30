@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   {path: 'search', component: ListeResultatsFilmsComponent},
   {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent},
-  {path: 'list/:id', component: ListeComponent}
+  {path: 'list', component: ListeComponent}
 ];
 
 @NgModule({

@@ -40,8 +40,8 @@ export class ListsManagerComponent implements OnInit {
 
     this.listService.getUserLists().subscribe(listes => {
       const listeChoisie = listes.filter(l => l.name === listeName)[0];
-      this.router.navigate(['list']); //, {queryParams: {name: listeName}} );
-        console.log(listeChoisie.name);
+      this.router.navigate(['list'], {queryParams: {name: listeName}});
+      //console.log(listeChoisie.name);
 
     });
   }

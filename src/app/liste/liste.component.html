@@ -1,3 +1,10 @@
-<p>
-  liste-component works!
-</p>
+<div *ngIf="currentList">
+
+  <h1>{{currentList.name}}</h1> <button (click)="currentList.name = 'CLICK'">changer de nom</button>
+
+  <ul *ngIf="currentList.movies">
+    <li *ngFor="let m of currentList.movies">m</li>
+  </ul>
+
+
+</div>
