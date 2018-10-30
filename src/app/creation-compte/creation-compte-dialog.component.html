@@ -21,8 +21,11 @@ Connexion
 
 <form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">
   <label>
-    <input type="text" [(ngModel)]="email" formControlName="email" />
+    <input type="text" name="email" [(ngModel)]="email" formControlName="email" />
     Email
+    <small [hidden]="email.valid || (email.pristine && !myForm.submitted)" class="text-danger">
+      Username is required (minimum 5 characters).
+    </small>
   </label>
   <br/>
   <label>
