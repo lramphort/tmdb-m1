@@ -1,0 +1,41 @@
+<!--
+<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
+-->
+
+Connexion
+<br/>
+<button>Facebook</button> <br/>
+<button>Google</button> <br/>
+<button>Twitter</button> <br/>
+<br/>
+
+<form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">
+  <label>
+    <input type="text" [(ngModel)]="email" formControlName="email" />
+    Email
+  </label>
+  <br/>
+  <label>
+    <input type="password" [(ngModel)]="password" formControlName="password" />
+    Mot de passe
+  </label>
+  <br/>
+  <label>
+    <input type="password" [(ngModel)]="password2" formControlName="password2" />
+    Confirmer le mot de passe
+  </label>
+  <p *ngIf="form.get('password2').hasError('') && myForm.submitted">Name is required</p>
+  <br/>
+  <button type="submit">OK</button>
+</form>
+

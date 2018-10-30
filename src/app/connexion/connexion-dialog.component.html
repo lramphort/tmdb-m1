@@ -1,0 +1,24 @@
+
+Connexion
+<br/>
+<button>Facebook</button> <br/>
+<button>Google</button> <br/>
+<button>Twitter</button> <br/>
+<br/>
+
+<form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">
+  <label>
+    <input type="text" [(ngModel)]="email" formControlName="email" />
+    Email
+  </label>
+  <br/>
+  <label>
+    <input type="password" [(ngModel)]="password" formControlName="password" />
+    Mot de passe
+  </label>
+  <br/>
+  <button type="submit">OK</button>
+  <a>J'ai oublié mon mot de passe</a>
+  <p *ngIf="form.get('password2').hasError('') && myForm.submitted">Name is required</p>
+  <br/>
+</form>
