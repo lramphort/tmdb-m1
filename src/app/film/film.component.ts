@@ -46,6 +46,8 @@ export class FilmComponent implements OnInit {
 
   }
 
+
+
   getPath(path: string): string {
     return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
   }
