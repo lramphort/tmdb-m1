@@ -46,10 +46,6 @@ export class FilmComponent implements OnInit {
 
   }
 
- /* plus(liste de film l) {
-        ajoute le film a la liste passee en param
-  }*/
-
   getPath(path: string): string {
     return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
   }

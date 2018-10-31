@@ -51,6 +51,15 @@ export class MovieListService {
     return this.lists.valueChanges();
   }
 
+  getList (listeName: string): Observable<ListStructure[]> {
+    // tslint:disable-next-line:max-line-length
+    // return this.lists.query();
+    this.lists.valueChanges().subscribe(value => {
+      return value.filter(val => val.name === listeName);
+    });
+    return undefined;
+  }
+
   test() {
     console.log("Testr");
 
@@ -63,8 +72,11 @@ export class MovieListService {
   deleteList (liste: string) {
     console.log ("hasta la vista, baby !" +  liste);
   }
+  /*
+  isInList (liste : string, idMovie: number){
 
-
+  }
+  */
 }
 
 

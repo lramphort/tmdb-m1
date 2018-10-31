@@ -14,7 +14,7 @@ export class ListsManagerComponent implements OnInit {
   newListe: string;
   userLists: ListStructure[];
 
-  constructor(private route: Router, public listService: MovieListService) {
+  constructor(private router: Router, public listService: MovieListService) {
     this.addingList = false;
     this.listService.getUser().subscribe( u => {
       if (u) {
@@ -34,5 +34,15 @@ export class ListsManagerComponent implements OnInit {
 
   createList() {
     this.listService.addList(this.newListe);
+  }
+
+  clickOnListe(listeName: string) {
+
+    this.listService.getUserLists().subscribe(listes => {
+      const listeChoisie = listes.filter(l => l.name === listeName)[0];
+      this.router.navigate(['list'], {queryParams: {name: listeName}});
+      //console.log(listeChoisie.name);
+
+    });
   }
 }

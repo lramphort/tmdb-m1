@@ -11,34 +11,26 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatCardModule,
-  MatSidenavModule,
-  MatFormFieldModule,
-  MatDialogModule,
-  MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatDialogModule, MatInputModule}
+    from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
-import {ConnexionComponent, ConnexionDialogComponent} from './connexion/connexion.component';
+import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connexion.component';
 
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
-import {AuthService} from './auth.service';
+import { ListeComponent } from './liste/liste.component';
+import { ActorComponent } from './actor/actor.component';
 
 
 
 const appRoutes: Routes = [
-  /*{ path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},*/
   {path: 'search', component: ListeResultatsFilmsComponent},
-  {path: 'movie/:id', component: FilmComponent}
+  {path: 'creation-compte', component: CreationCompteComponent},
+  {path: 'movie/:id', component: FilmComponent},
+  {path: 'list', component: ListeComponent}
 ];
 
 @NgModule({
@@ -48,11 +40,13 @@ const appRoutes: Routes = [
     ListeResultatsFilmsComponent,
     RechercheComponent,
     ListsManagerComponent,
+    ActorComponent,
     RechercheComponent,
     CreationCompteComponent,
     CreationCompteDialogComponent,
     ConnexionComponent,
-    ConnexionDialogComponent
+    ConnexionDialogComponent,
+    ListeComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +55,6 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -81,7 +74,7 @@ const appRoutes: Routes = [
   exports: [
     MatFormFieldModule
   ],
-  providers: [TmdbService, AuthService],
+  providers: [TmdbService],
   bootstrap: [AppComponent],
   entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
 })

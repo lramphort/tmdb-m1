@@ -33,7 +33,7 @@ export class AppComponent {
       this._user = u;
       const listsPath = `lists/${u.uid}`;
       const lists = db.list(listsPath);
-      lists.push('coucou');
+      //lists.push('coucou');
       this.dbData = lists.valueChanges();
     });
     setTimeout( () =>
@@ -41,7 +41,7 @@ export class AppComponent {
           .getMovie(13)
           .then( (m: MovieResponse) => console.log('Movie 13:', this._movie = m) )
           .catch( err => console.error('Error getting movie:', err) ),
-      1000 );
+      1000 );/**/
 
   }
 
