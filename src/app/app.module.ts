@@ -12,21 +12,32 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatDialogModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatDialogModule,
+  MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import {ConnexionComponent, ConnexionDialogComponent} from './connexion/connexion.component';
 
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
+import {AuthService} from './auth.service';
 
 
 
 const appRoutes: Routes = [
+  /*{ path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent,  resolve: { data: UserResolver}},*/
   {path: 'search', component: ListeResultatsFilmsComponent},
-  {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent}
 ];
 
@@ -40,7 +51,8 @@ const appRoutes: Routes = [
     RechercheComponent,
     CreationCompteComponent,
     CreationCompteDialogComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ConnexionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,8 +81,8 @@ const appRoutes: Routes = [
   exports: [
     MatFormFieldModule
   ],
-  providers: [TmdbService],
+  providers: [TmdbService, AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [CreationCompteDialogComponent]
+  entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
 })
 export class AppModule { }
