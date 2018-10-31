@@ -17,9 +17,10 @@ import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connexion.component';
 
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
+import { ListeComponent } from './liste/liste.component';
 import { ActorComponent } from './actor/actor.component';
 
 
@@ -27,7 +28,8 @@ import { ActorComponent } from './actor/actor.component';
 const appRoutes: Routes = [
   {path: 'search', component: ListeResultatsFilmsComponent},
   {path: 'creation-compte', component: CreationCompteComponent},
-  {path: 'movie/:id', component: FilmComponent}
+  {path: 'movie/:id', component: FilmComponent},
+  {path: 'list', component: ListeComponent}
 ];
 
 @NgModule({
@@ -41,7 +43,9 @@ const appRoutes: Routes = [
     RechercheComponent,
     CreationCompteComponent,
     CreationCompteDialogComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ConnexionDialogComponent,
+    ListeComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,6 @@ const appRoutes: Routes = [
   ],
   providers: [TmdbService],
   bootstrap: [AppComponent],
-  entryComponents: [CreationCompteDialogComponent]
+  entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
 })
 export class AppModule { }
