@@ -3,19 +3,21 @@
   <div class="gauche">
       <div><img [src]="getPath(poster_path)" /></div>
       <div>
-          <div class="gauche">
-            <button *ngIf="movieId" mat-icon-button class="centre">
+          <div class="gauche" *ngIf="movieId">
+           <!-- <button *ngIf="!IsInAList(movieId)" mat-icon-button class="centre">
               <mat-icon aria-label="plus icon">add</mat-icon>
-              <!-- tester si film appart a une liste et si oui metre une autre icon-->
-              <!-- si clique, afficher pop up avec liste des films, -->
+              <!-- si clique, afficher pop up avec listes utiisateurs -->
               <!-- apres click sur une liste, fonction ajouter film a la liste -->
-            </button>
+           <!-- </button>
+            <button *ngIf="IsInAList(movieId)" mat-icon-button class="centre">
+              <mat-icon aria-label="list icon">event_note</mat-icon>
+              <!-- si clique, afficher pop up avec listes qui contiennent le film -->
+              <!-- apres click sur une liste, fonction ajouter film a la liste -->
+           <!-- </button>-->
           </div>
-
           <div class="droite">
             <button mat-icon-button class="centre">
-              <mat-icon aria-label="plus icon">delete</mat-icon>
-              <!-- fonction supprimer un film -->
+              <mat-icon aria-label="delete icon">delete</mat-icon>
             </button>
           </div>
       </div>
@@ -27,8 +29,8 @@
                <a href="#2" title="Donner 2 étoiles">☆</a>
                <a href="#1" title="Donner 1 étoile">☆</a>
           </div>
-          <div>
-                <!-- afficher la note du film -->
+          <div class="note">
+              note : {{vote_average}}
           </div>
       </div>
 
@@ -58,15 +60,12 @@
         </li>
         <li> Revenue :                  {{revenue}} </li>
         <li> Budget :                   {{bugdet}} </li>
-        <!--
         <li> Acteurs :
-            <ng-container *ngFor="let a of acteurs">
-              {{a.name}} ,
+            <ng-container *ngFor="let c of cast">
+              {{c.name}} ,
             </ng-container>
         </li>
-        -->
         <li> Synopsis :                 {{synopsis}} </li>
-
       </ul>
   </div>
 </div>

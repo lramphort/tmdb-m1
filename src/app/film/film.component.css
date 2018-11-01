@@ -23,6 +23,15 @@ img {
   margin-left:auto;
   margin-right:auto;
 }
+
+.note {
+  float:right;
+  padding-right:275px;
+  padding-top:17px;
+  font-family: "Calibri Light";
+  font-size:2em;
+}
+
 .rating{
   float:left;
   width:50%;
