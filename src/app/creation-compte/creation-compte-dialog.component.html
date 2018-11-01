@@ -1,16 +1,3 @@
-<!--
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
-</div>
--->
 
 Connexion
 <br/>
@@ -19,25 +6,33 @@ Connexion
 <button>Twitter</button> <br/>
 <br/>
 
-<form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">
+<form [formGroup]="form" (submit)="onSubmit()" #myForm="ngForm">
   <label>
-    <input type="text" name="email" [(ngModel)]="email" formControlName="email" />
+    <input type="text" [ngModel]="" name="email" formControlName="email" />
     Email
-    <small [hidden]="email.valid || (email.pristine && !myForm.submitted)" class="text-danger">
-      Username is required (minimum 5 characters).
+    <small *ngIf="form.controls['email'].hasError('required')" class="text-danger">
+      Adresse email requise
     </small>
   </label>
   <br/>
   <label>
-    <input type="password" [(ngModel)]="password" formControlName="password" />
+    <input type="password" formControlName="password" />
     Mot de passe
+    <small *ngIf="form.controls['password'].hasError('required')" class="text-danger">
+      Mot de passe requis
+    </small>
   </label>
   <br/>
   <label>
-    <input type="password" [(ngModel)]="password2" formControlName="password2" />
+    <input type="password" formControlName="password2" />
     Confirmer le mot de passe
+    <small *ngIf="form.controls['password2'].hasError('required')" class="text-danger">
+      Mot de passe requis
+    </small>
+  <small *ngIf="form.hasError('matchPasswords')" class="text-danger">
+    Les mots de passe ne concordent pas
+  </small>
   </label>
-  <p *ngIf="form.get('password2').hasError('') && myForm.submitted">Name is required</p>
   <br/>
   <button type="submit">OK</button>
 </form>

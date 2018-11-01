@@ -17,20 +17,16 @@ export interface DialogData {
 })
 export class ConnexionComponent {
 
-  email: string;
-  password: string;
 
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ConnexionDialogComponent, {
-      width: '250px',
-      data: {email: this.email, password: this.password}
+      width: '250px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      console.log('The dialog was closed : ' + result);
     });
   }
 
@@ -52,8 +48,7 @@ export class ConnexionDialogComponent {
     private fb: FormBuilder) {
     this.form = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
-      password2: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
 
