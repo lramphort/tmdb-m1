@@ -25,7 +25,7 @@
 <!-- A SUPPRIMER-->
 <h1>TMDB + Firebase</h1>
 <nav *ngIf="user">
-  <label>{{user.displayName}}</label>
+  <label>Connecté en tant que {{user.displayName}}</label>
   <img [src]="user.photoURL" />
   <button (click)="logout()">Déconnection</button>
   {{user.uid}}

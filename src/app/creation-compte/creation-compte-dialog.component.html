@@ -10,7 +10,7 @@ Connexion
   <label>
     <input type="text" [ngModel]="" name="email" formControlName="email" />
     Email
-    <small *ngIf="form.controls['email'].hasError('required')" class="text-danger">
+    <small *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="text-danger">
       Adresse email requise
     </small>
   </label>
@@ -18,7 +18,7 @@ Connexion
   <label>
     <input type="password" formControlName="password" />
     Mot de passe
-    <small *ngIf="form.controls['password'].hasError('required')" class="text-danger">
+    <small *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="text-danger">
       Mot de passe requis
     </small>
   </label>
@@ -26,14 +26,14 @@ Connexion
   <label>
     <input type="password" formControlName="password2" />
     Confirmer le mot de passe
-    <small *ngIf="form.controls['password2'].hasError('required')" class="text-danger">
+    <small *ngIf="form.get('password2').touched && form.get('password2').hasError('required')" class="text-danger">
       Mot de passe requis
     </small>
-  <small *ngIf="form.hasError('matchPasswords')" class="text-danger">
+  <small *ngIf="form.get('password').touched && form.get('password2').touched && form.hasError('matchPasswords')" class="text-danger">
     Les mots de passe ne concordent pas
   </small>
   </label>
   <br/>
-  <button type="submit">OK</button>
+  <button type="submit" [disabled]="form.invalid">OK</button>
 </form>
 

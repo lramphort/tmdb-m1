@@ -10,14 +10,20 @@ Connexion
   <label>
     <input type="text" [(ngModel)]="email" formControlName="email" />
     Email
+    <small *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="text-danger">
+      Email requis
+    </small>
   </label>
   <br/>
   <label>
     <input type="password" [(ngModel)]="password" formControlName="password" />
     Mot de passe
+    <small *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="text-danger">
+      Mot de passe requis
+    </small>
   </label>
   <br/>
-  <button type="submit">OK</button>
+  <button type="submit" [disabled]="form.invalid">OK</button>
   <a>J'ai oublié mon mot de passe</a>
   <br/>
 </form>
