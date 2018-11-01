@@ -32,6 +32,7 @@ import {AuthService} from './auth.service';
 import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.component';
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
+import { MovieListService } from './movie-list.service';
 
 
 const appRoutes: Routes = [
@@ -84,7 +85,7 @@ const appRoutes: Routes = [
   exports: [
     MatFormFieldModule
   ],
-  providers: [TmdbService, AuthService],
+  providers: [TmdbService, AuthService, MovieListService],
   bootstrap: [AppComponent],
   entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
 })

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-lists-manager',
@@ -12,18 +13,19 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class ListsManagerComponent implements OnInit {
   addingList: boolean;
   newListe: string;
-  userLists: ListStructure[];
+  userLists: any;
+
 
   constructor(private router: Router, public listService: MovieListService) {
-    this.addingList = false;
     this.listService.getUser().subscribe( u => {
       if (u) {
-        this.listService.getUserLists().subscribe( l => {
-            this.userLists = l;
-          }
-        );
-      } else {
-        this.userLists = undefined;
+        this.listService.getUserLists().snapshotChanges().pipe(
+          map( changes => {
+            return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+          })
+        ).subscribe(lists => {
+          this.userLists = lists;
+        });
       }
     });
 
@@ -33,16 +35,18 @@ export class ListsManagerComponent implements OnInit {
   }
 
   createList() {
-    this.listService.addList(this.newListe);
+    const l: ListStructure = new ListStructure();
+    l.name = this.newListe;
+    this.listService.createList(l);
+    this.addingList = false;
+    this.newListe = "";
   }
 
-  clickOnListe(listeName: string) {
+  deleteList(k: string) {
+    this.listService.deleteList(k);
+  }
 
-    this.listService.getUserLists().subscribe(listes => {
-      const listeChoisie = listes.filter(l => l.name === listeName)[0];
-      this.router.navigate(['list'], {queryParams: {name: listeName}});
-      //console.log(listeChoisie.name);
-
-    });
+  clickOnListe(k: string) {
+    this.router.navigate(['list'], {queryParams: {key: k}});
   }
 }

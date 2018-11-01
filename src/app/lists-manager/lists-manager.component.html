@@ -1,11 +1,11 @@
 <h2><mat-icon>theaters</mat-icon> Listes de films <button (click)="addingList = true" mat-icon-button><mat-icon>add</mat-icon></button></h2>
 <ol *ngIf="userLists">
-  <li (click)="clickOnListe(l.name)" *ngFor="let l of userLists">
+  <li (click)="clickOnListe(l.key)" *ngFor="let l of userLists">
     {{l.name}}
     <button mat-icon-button>
       <mat-icon>create</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button (click)="deleteList(l.key)" mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>
   </li>

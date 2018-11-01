@@ -14,7 +14,6 @@ import {Observable} from 'rxjs';
 export class ListeComponent implements OnInit {
 
   currentList: ListStructure;
-  currentListObs: Observable<ListStructure[]>;
 
   constructor(private route: ActivatedRoute, private mls: MovieListService, public anAuth: AngularFireAuth,
               private db: AngularFireDatabase) { }
@@ -26,7 +25,7 @@ export class ListeComponent implements OnInit {
       this.mls.getUser().subscribe(u => {
         if (u) {
           this.db.list<ListStructure>(`users/${u.uid}/lists`, ref => {
-            return ref.limitToFirst(1).orderByChild('name').equalTo(params['name']);
+            return ref.limitToFirst(1).orderByChild('name').equalTo(params['key']);
           }).valueChanges().subscribe(lists => {
             this.currentList = lists[0];
           });

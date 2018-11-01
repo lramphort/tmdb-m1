@@ -12,7 +12,7 @@ import {User} from 'firebase';
 export class MovieListService {
 
   private user: Observable<User>;
-  private lists: AngularFireList<ListStructure>;
+  private listsRef: AngularFireList<ListStructure> = null;
 
   constructor(public anAuth: AngularFireAuth,
               private db: AngularFireDatabase) {
@@ -21,68 +21,53 @@ export class MovieListService {
     this.user.subscribe( u => {
 
       if (u) {
-        this.lists = db.list(`users/${u.uid}/lists`);
+        this.listsRef = db.list(`users/${u.uid}/lists`);
       } else {
-        this.lists = undefined;
+        this.listsRef = null;
       }
 
-      }) ;
+    }) ;
   }
 
   getUser(): Observable<User> {
     return this.user;
   }
 
+  getUserLists(): AngularFireList<ListStructure> {
+    return this.listsRef;
+  }
+
+  createList(list: ListStructure): void {
+    this.listsRef.push(list);
+  }
+
+  updateList(key: string, value: any): void {
+    this.listsRef.update(key, value).catch(err => this.displayError(err));
+  }
+
+  deleteList(key: string): void {
+    this.listsRef.remove(key).catch(err => this.displayError(err));
+  }
+
   addMovie(liste: string, idMovie: number) {
-    console.log ("truc tout pourrave - addMovie" + idMovie + liste);
   }
 
   deleteMovie(liste: string, idMovie: number) {
-    //if movie is in list
-    console.log ("truc tout pourrave - deleteMovie" + idMovie + liste);
   }
 
   addList (liste: string) {
-    const l: ListStructure = {name: liste};
-    this.lists.push(l);
   }
 
-  getUserLists(): Observable<ListStructure[]> {
-    return this.lists.valueChanges();
+
+
+  /*getList (listeName: string): Observable<ListStructure[]> {
+
+  }*/
+
+  private displayError(err: any) {
+    console.log(err);
   }
-
-  getRawLists(): AngularFireList<ListStructure> {
-    return this.lists;
-  }
-
-  getList (listeName: string): Observable<ListStructure[]> {
-    // tslint:disable-next-line:max-line-length
-    // return this.lists.query();
-
-    this.lists;
-    this.lists.valueChanges().subscribe(value => {
-      return value.filter(val => val.name === listeName);
-    });
-    return undefined;
-  }
-
-  test() {
-    console.log("Testr");
-
-  }
-
-  renameList (liste: string, newName: string) {
-    console.log ("truc tout pourrave - renameList" + newName + liste);
-  }
-
-  deleteList (liste: string) {
-    console.log ("hasta la vista, baby !" +  liste);
-  }
-  /*
-  isInList (liste : string, idMovie: number){
-
-  }
-  */
 }
+
 
 
