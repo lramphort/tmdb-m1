@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TmdbService} from "../tmdb.service";
-import {MovieGenre, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
+import {MovieCast, MovieGenre, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
+import {MovieListService} from "../movie-list.service";
+import {ListStructure} from "../dataTypes/ListStructure";
 
 @Component({
   selector: 'app-film',
@@ -21,10 +23,11 @@ export class FilmComponent implements OnInit {
   bugdet: number;
   synopsis: string;
   poster_path: string;
-  // acteurs: ;
+  vote_average: number;
+  cast: MovieCast[];
 
 
-  constructor(private route: ActivatedRoute, private tmdb: TmdbService) {
+  constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
     this.movieId = +this.route.snapshot.paramMap.get('id');
     this.tmdb.getMovie(this.movieId).then(res => {
       this.title = res.title;
@@ -38,7 +41,10 @@ export class FilmComponent implements OnInit {
       this.pays       = res.production_countries;
       this.langues    = res.spoken_languages;
       this.poster_path = res.poster_path;
-      // this.acteurs  = res. ?????? ;
+      this.vote_average = res.vote_average;
+    });
+    this.tmdb.getMovieCredit(this.movieId).then(res => {
+      this.cast = res.cast;
     });
   }
 
@@ -46,6 +52,18 @@ export class FilmComponent implements OnInit {
 
   }
 
+  getListsWhereMovieBelong(movieId: number): string[] {
+    const tab: string[] = [];
+    console.log(this.movieList.getUserLists());
+      /*.forEach(list => {
+      //tab.push(list.name.toString());
+      console.log(list);
+    });*/
+    return tab;
+  }
+  IsInAList(movieId: number): boolean {
+    if (this.getListsWhereMovieBelong(movieId) !== []) { return true; }
+  }
 
 
   getPath(path: string): string {

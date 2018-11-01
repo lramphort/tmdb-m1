@@ -55,7 +55,7 @@ export class TmdbService {
   }
 
   async getMovieCredit(id: number): Promise<MovieCreditsResponse> {
-    const url = `${tmdbApi}/movieCredits/${id}`;
+    const url = `${tmdbApi}/movie/${id}/credits`;
     const res = await this.get<MovieCreditsResponse>(url, null);
     return res.body;
   }
