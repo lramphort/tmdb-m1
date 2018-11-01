@@ -33,13 +33,17 @@ import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.componen
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
 import { MovieListService } from './movie-list.service';
+import { ListsManagerElementComponent } from './lists-manager-element/lists-manager-element.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
+  {path: '', component: DashboardComponent},
   {path: 'search', component: ListeResultatsFilmsComponent},
   {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent},
-  {path: 'list', component: ListeComponent}
+  {path: 'list', component: ListeComponent},
+  {path: 'actor/:id', component: ActorComponent}
 ];
 
 @NgModule({
@@ -57,7 +61,9 @@ const appRoutes: Routes = [
     ConnexionDialogComponent,
     ListeComponent,
     FilmsSuggeresComponent,
-    ActeursPopulairesComponent
+    ActeursPopulairesComponent,
+    ListsManagerElementComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
