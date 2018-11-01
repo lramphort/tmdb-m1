@@ -51,9 +51,15 @@ export class MovieListService {
     return this.lists.valueChanges();
   }
 
+  getRawLists(): AngularFireList<ListStructure> {
+    return this.lists;
+  }
+
   getList (listeName: string): Observable<ListStructure[]> {
     // tslint:disable-next-line:max-line-length
     // return this.lists.query();
+
+    this.lists;
     this.lists.valueChanges().subscribe(value => {
       return value.filter(val => val.name === listeName);
     });
