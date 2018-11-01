@@ -41,7 +41,7 @@ export class AppComponent {
           .getMovie(13)
           .then( (m: MovieResponse) => console.log('Movie 13:', this._movie = m) )
           .catch( err => console.error('Error getting movie:', err) ),
-      1000 );/**/
+      1000 ); /**/
 
   }
 

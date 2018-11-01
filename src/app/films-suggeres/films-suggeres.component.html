@@ -1,0 +1,16 @@
+
+<p>Vous aimerez sûrement :</p>
+
+<ul *ngIf="movieList">
+  <li *ngFor="let m of movieList">
+    <a routerLink="/movie/{{m.id}}">
+      <mat-card>
+        <mat-card-header>
+          {{m.title}}
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </li>
+
+</ul>
+

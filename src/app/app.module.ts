@@ -11,8 +11,13 @@ import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatCardModule, MatSidenavModule, MatFormFieldModule, MatDialogModule, MatInputModule}
-    from '@angular/material';
+import {MatButtonModule,
+  MatCheckboxModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatFormFieldModule,
+  MatDialogModule,
+  MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
@@ -23,6 +28,9 @@ import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connex
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
 import { ListeComponent } from './liste/liste.component';
 import { ActorComponent } from './actor/actor.component';
+import {AuthService} from './auth.service';
+import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.component';
+import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
 
 
@@ -46,7 +54,9 @@ const appRoutes: Routes = [
     CreationCompteDialogComponent,
     ConnexionComponent,
     ConnexionDialogComponent,
-    ListeComponent
+    ListeComponent,
+    FilmsSuggeresComponent,
+    ActeursPopulairesComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +84,7 @@ const appRoutes: Routes = [
   exports: [
     MatFormFieldModule
   ],
-  providers: [TmdbService],
+  providers: [TmdbService, AuthService],
   bootstrap: [AppComponent],
   entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
 })
