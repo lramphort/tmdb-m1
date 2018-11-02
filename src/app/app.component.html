@@ -11,6 +11,10 @@
       <app-recherche></app-recherche>
       <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
     </header>
+
+    <app-connexion></app-connexion>
+    <app-creation-compte></app-creation-compte>
+
     <router-outlet></router-outlet>
     <nav *ngIf="user">
       <label>{{user.displayName}}</label>
@@ -19,9 +23,9 @@
       {{user.uid}}
     </nav>
     <nav *ngIf="!user">
-      <app-connexion></app-connexion>
-      <app-creation-compte></app-creation-compte>
-      <app-actor></app-actor>
+      <!--
+
+      <app-actor></app-actor>-->
     </nav>
 <!-- A SUPPRIMER-->
 <h1>TMDB + Firebase</h1>
@@ -35,26 +39,6 @@
   <button (click)="login()">Connection via Google</button>
 </nav>
 
-<hr/>
-<pre *ngIf="lists">
-  {{lists | async | json}}
-</pre>
-
-<hr/>
-<section *ngIf="movie">
-  <img [src]="getPath(movie.poster_path)" />
-  <pre>{{movie | json}}</pre>
-</section>
-<section *ngIf="!movie">
-  Pas encore de films à afficher...
-</section>
-
-
-    <!-- TODO ici les éléments films suggérés ; acteurs populaires -->
-    <app-films-suggeres></app-films-suggeres>
-    <br/>
-    <app-acteurs-populaires></app-acteurs-populaires>
-    <br/>
 
 
   </mat-sidenav-content>

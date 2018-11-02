@@ -1,0 +1,17 @@
+<li>
+  <span *ngIf="!editMode">
+    <a (click)="clickOnListe()" *ngIf="!editMode">{{list.name}}</a>
+    <button (click)="editMode=true;" mat-icon-button>
+      <mat-icon>create</mat-icon>
+    </button>
+    <button (click)="delete()" mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
+
+  <form (submit)="changeName()" *ngIf="editMode">
+    <input [(ngModel)]="newName" name="newName" matInput placeholder="{{list.name}}">
+  </form>
+
+
+</li>

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-liste-component',
@@ -12,35 +16,26 @@ export class ListeComponent implements OnInit {
 
   currentList: ListStructure;
 
-  constructor(private route: ActivatedRoute, private mls: MovieListService) { }
+  constructor(private route: ActivatedRoute, private mls: MovieListService, public anAuth: AngularFireAuth,
+              private db: AngularFireDatabase) { }
 
   ngOnInit() {
+
     this.route.queryParams.subscribe(params => {
-      console.log(params['name']);
-      this.mls.getUser().subscribe(user => {
-        if (user) {
-          this.mls.getUserLists().subscribe(lists => {
-            this.currentList = lists.filter(l => l.name === params['name'])[0];
+
+      this.mls.getUser().subscribe(u => {
+        if (u) {
+          this.mls.getList(params['key']).snapshotChanges().pipe(
+            map( changes => {
+              return ({key: params['key'], ...changes.payload.val()});
+            })
+          ).subscribe(l => {
+            this.currentList = l;
           });
         }
       });
 
-
     });
-
-
-
-      /*this.tmdb.searchMovie({
-        language: "fr-FR",
-        query: params['searchText']
-      }).then(
-        res => {
-
-          this.currentSearchRes = res;
-        }
-      );
-
-    });*/
   }
 
 }

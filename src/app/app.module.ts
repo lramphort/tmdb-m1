@@ -32,13 +32,18 @@ import {AuthService} from './auth.service';
 import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.component';
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
+import { MovieListService } from './movie-list.service';
+import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
+  {path: '', component: DashboardComponent},
   {path: 'search', component: ListeResultatsFilmsComponent},
   {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent},
-  {path: 'list', component: ListeComponent}
+  {path: 'list', component: ListeComponent},
+  {path: 'actor/:id', component: ActorComponent}
 ];
 
 @NgModule({
@@ -56,7 +61,10 @@ const appRoutes: Routes = [
     ConnexionDialogComponent,
     ListeComponent,
     FilmsSuggeresComponent,
-    ActeursPopulairesComponent
+    ActeursPopulairesComponent,
+    ListsManagerElementComponent,
+    DashboardComponent,
+    DialogDeleteListComponent
   ],
   imports: [
     BrowserModule,
@@ -84,8 +92,11 @@ const appRoutes: Routes = [
   exports: [
     MatFormFieldModule
   ],
-  providers: [TmdbService, AuthService],
+  providers: [TmdbService, AuthService, MovieListService],
   bootstrap: [AppComponent],
-  entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
+  entryComponents: [
+    CreationCompteDialogComponent,
+    ConnexionDialogComponent,
+    DialogDeleteListComponent]
 })
 export class AppModule { }

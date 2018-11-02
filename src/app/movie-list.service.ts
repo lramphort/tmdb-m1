@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase, AngularFireList, PathReference} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireList, AngularFireObject, PathReference} from '@angular/fire/database';
 import {ListStructure} from './dataTypes/ListStructure';
 import {filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -12,7 +12,8 @@ import {User} from 'firebase';
 export class MovieListService {
 
   private user: Observable<User>;
-  private lists: AngularFireList<ListStructure>;
+  private uid: string;
+  private listsRef: AngularFireList<ListStructure> = null;
 
   constructor(public anAuth: AngularFireAuth,
               private db: AngularFireDatabase) {
@@ -21,62 +22,52 @@ export class MovieListService {
     this.user.subscribe( u => {
 
       if (u) {
-        this.lists = db.list(`users/${u.uid}/lists`);
+        this.uid = u.uid;
+        this.listsRef = db.list(`users/${this.uid}/lists`, ref => ref.orderByChild('name'));
       } else {
-        this.lists = undefined;
+        this.listsRef = null;
+        this.uid = null;
       }
 
-      }) ;
+    }) ;
   }
 
   getUser(): Observable<User> {
     return this.user;
   }
 
+  getUserLists(): AngularFireList<ListStructure> {
+    return this.listsRef;
+  }
+
+  getList(key: string): AngularFireObject<ListStructure> {
+    return this.db.object(`users/${this.uid}/lists/${key}`);
+  }
+
+  createList(list: ListStructure): void {
+    this.listsRef.push(list);
+  }
+
+  updateList(key: string, value: any): void {
+    this.listsRef.update(key, value).catch(err => this.displayError(err));
+  }
+
+  deleteList(key: string): void {
+    this.listsRef.remove(key).catch(err => this.displayError(err));
+  }
+
   addMovie(liste: string, idMovie: number) {
-    console.log ("truc tout pourrave - addMovie" + idMovie + liste);
   }
 
   deleteMovie(liste: string, idMovie: number) {
-    //if movie is in list
-    console.log ("truc tout pourrave - deleteMovie" + idMovie + liste);
   }
 
-  addList (liste: string) {
-    const l: ListStructure = {name: liste};
-    this.lists.push(l);
-  }
 
-  getUserLists(): Observable<ListStructure[]> {
-    return this.lists.valueChanges();
-  }
 
-  getList (listeName: string): Observable<ListStructure[]> {
-    // tslint:disable-next-line:max-line-length
-    // return this.lists.query();
-    this.lists.valueChanges().subscribe(value => {
-      return value.filter(val => val.name === listeName);
-    });
-    return undefined;
+  private displayError(err: any) {
+    console.log(err);
   }
-
-  test() {
-    console.log("Testr");
-
-  }
-
-  renameList (liste: string, newName: string) {
-    console.log ("truc tout pourrave - renameList" + newName + liste);
-  }
-
-  deleteList (liste: string) {
-    console.log ("hasta la vista, baby !" +  liste);
-  }
-  /*
-  isInList (liste : string, idMovie: number){
-
-  }
-  */
 }
+
 
 

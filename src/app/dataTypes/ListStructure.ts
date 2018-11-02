@@ -1,4 +1,5 @@
-export interface ListStructure {
+export class ListStructure {
+  key: string;
   name: string;
   movies?: number[];
 }
