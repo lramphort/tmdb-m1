@@ -11,10 +11,10 @@
       <app-recherche></app-recherche>
       <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
     </header>
-
+    <nav *ngIf="!user">
     <app-connexion></app-connexion>
     <app-creation-compte></app-creation-compte>
-
+    </nav>
     <router-outlet></router-outlet>
     <nav *ngIf="user">
       <label>{{user.displayName}}</label>

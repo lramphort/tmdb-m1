@@ -9,6 +9,8 @@ import {map} from 'rxjs/operators';
 
 import {DialogDeleteListComponent, DialogData} from '../lists-manager-element/lists-manager-element.component';
 import {MatDialog} from '@angular/material';
+import {MovieResponse} from '../tmdb-data/Movie';
+import {TmdbService} from '../tmdb.service';
 
 
 @Component({
@@ -21,12 +23,16 @@ export class ListeComponent implements OnInit {
   currentList: ListStructure;
   editMode: boolean;
   newName: string;
+  moyenne: number;
+
+  listeFilmsTMDB: MovieResponse[];
 
   constructor(private route: ActivatedRoute,
               private mls: MovieListService,
               public anAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private tmdb: TmdbService) { }
 
   ngOnInit() {
 
@@ -40,15 +46,34 @@ export class ListeComponent implements OnInit {
             })
           ).subscribe(l => {
             this.currentList = l;
+            this.moyenne = 0;
+            this.listeFilmsTMDB = [];
+            if (l.movies) {
+              l.movies.forEach(movie => {
+                  this.tmdb.getMovie(movie, {language: "FR-fr"}).then(m => {
+                    this.listeFilmsTMDB.push(m);
+
+                    const sommePopularity = this.listeFilmsTMDB.reduce( (acc, obj) => {
+                      return acc + obj.vote_average;
+                    }, 0);
+
+                    this.moyenne = sommePopularity / this.listeFilmsTMDB.length;
+                  });
+                }
+              );
+            }
+
           });
         }
       });
 
     });
+
+
   }
 
   delete() {
-    const dialogRef = this.dialog.open(DialogDeleteListComponent, {
+    this.dialog.open(DialogDeleteListComponent, {
       width: '300px',
       data: {key: this.currentList.key}
     });
@@ -60,6 +85,11 @@ export class ListeComponent implements OnInit {
     this.mls.addMovie(this.currentList, 165);
     this.mls.addMovie(this.currentList, 196);
 
+    //this.removeFilmTempo();
+  }
+
+  removeFilmTempo() {
+    this.mls.deleteMovie(this.currentList, 196);
   }
 
   changeName() {
