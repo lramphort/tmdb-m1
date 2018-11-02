@@ -56,10 +56,28 @@ export class MovieListService {
     this.listsRef.remove(key).catch(err => this.displayError(err));
   }
 
-  addMovie(liste: string, idMovie: number) {
+  updateMoviesForList(liste: ListStructure) {
+
   }
 
-  deleteMovie(liste: string, idMovie: number) {
+  addMovie(liste: ListStructure, idMovie: number) {
+    if (!liste.movies) {
+      liste.movies = [];
+    }
+
+    liste.movies.push(idMovie);
+
+    const value: any = {movies: liste.movies};
+    this.listsRef.update(liste.key, value).catch(err => this.displayError(err));
+
+  }
+
+  deleteMovie(liste: ListStructure, idMovie: number) {
+    if (!liste.movies) {
+      return;
+    }
+
+
   }
 
 
