@@ -54,20 +54,26 @@ export class FilmComponent implements OnInit {
 
   getListsWhereMovieBelong(movieId: number): string[] {
     const tab: string[] = [];
-    console.log(this.movieList.getUserLists());
-      /*.forEach(list => {
-      //tab.push(list.name.toString());
-      console.log(list);
-    });*/
+    this.movieList.getUser().subscribe( u => {
+      if (u) {
+        this.movieList.getUserLists().valueChanges().subscribe(lists => {
+          lists.forEach(list => {
+            if (this.isInTheList(movieId, list)) { tab.push(list.name.toString()); }
+          });
+        });
+      }
+    });
     return tab;
   }
-  IsInAList(movieId: number): boolean {
-    if (this.getListsWhereMovieBelong(movieId) !== []) { return true; }
+
+  isInAList(movieId: number): boolean {
+    if ([] === this.getListsWhereMovieBelong(movieId)) { return false; }
   }
 
-
-  getPath(path: string): string {
-    return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
+  isInTheList(movieId: number, list: ListStructure): boolean {
+    return list.movies.reduce( (acc, v) => (acc || v === movieId), false);
   }
+
+  getPath(): string { return `https://image.tmdb.org/t/p/w500${this.poster_path}`; }
 
 }
