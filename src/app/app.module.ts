@@ -33,7 +33,7 @@ import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.componen
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
 import { MovieListService } from './movie-list.service';
-import { ListsManagerElementComponent } from './lists-manager-element/lists-manager-element.component';
+import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -63,7 +63,8 @@ const appRoutes: Routes = [
     FilmsSuggeresComponent,
     ActeursPopulairesComponent,
     ListsManagerElementComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogDeleteListComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +94,9 @@ const appRoutes: Routes = [
   ],
   providers: [TmdbService, AuthService, MovieListService],
   bootstrap: [AppComponent],
-  entryComponents: [CreationCompteDialogComponent, ConnexionDialogComponent]
+  entryComponents: [
+    CreationCompteDialogComponent,
+    ConnexionDialogComponent,
+    DialogDeleteListComponent]
 })
 export class AppModule { }

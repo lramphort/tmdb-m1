@@ -23,7 +23,7 @@ export class MovieListService {
 
       if (u) {
         this.uid = u.uid;
-        this.listsRef = db.list(`users/${this.uid}/lists`);
+        this.listsRef = db.list(`users/${this.uid}/lists`, ref => ref.orderByChild('name'));
       } else {
         this.listsRef = null;
         this.uid = null;

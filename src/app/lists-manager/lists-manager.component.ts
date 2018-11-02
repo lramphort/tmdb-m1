@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {map} from 'rxjs/operators';
+
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {DialogData} from '../connexion/connexion.component';
+
+
+
 
 @Component({
   selector: 'app-lists-manager',
@@ -42,11 +48,7 @@ export class ListsManagerComponent implements OnInit {
     this.newListe = "";
   }
 
-  deleteList(k: string) {
-    this.listService.deleteList(k);
-  }
-
-  clickOnListe(k: string) {
-    this.router.navigate(['list'], {queryParams: {key: k}});
-  }
 }
+
+
+
