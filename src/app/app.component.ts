@@ -27,7 +27,9 @@ export class AppComponent {
               ) {
     this.sideNavVisible = false;
     tmdb.init('25ea93320b0ede2eb2ce7b2661886a0e');
-
+    this.anAuth.user.subscribe(u => {
+      this._user = u;
+    });
   }
 
   get movie(): MovieResponse {

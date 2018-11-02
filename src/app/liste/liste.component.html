@@ -20,10 +20,17 @@
 
   <section class="details">
     <ul>
-      <li>Nombre de films dans la liste : </li>
-      <li>Note moyenne de la liste : </li>
+      <li>Nombre de films dans la liste : {{listeFilmsTMDB.length}}</li>
+      <li>Note moyenne de la liste : {{moyenne | number : '1.0-2' }}</li>
     </ul>
   </section>
+
+
+  <ul *ngIf="listeFilmsTMDB">
+    <li *ngFor="let m of listeFilmsTMDB">
+      {{m.title}}
+    </li>
+  </ul>
 
 
 </div>

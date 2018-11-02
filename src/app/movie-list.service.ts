@@ -57,7 +57,8 @@ export class MovieListService {
   }
 
   updateMoviesForList(liste: ListStructure) {
-
+    const value: any = {movies: liste.movies};
+    this.listsRef.update(liste.key, value).catch(err => this.displayError(err));
   }
 
   addMovie(liste: ListStructure, idMovie: number) {
@@ -67,8 +68,7 @@ export class MovieListService {
 
     liste.movies.push(idMovie);
 
-    const value: any = {movies: liste.movies};
-    this.listsRef.update(liste.key, value).catch(err => this.displayError(err));
+    this.updateMoviesForList(liste);
 
   }
 
@@ -77,6 +77,11 @@ export class MovieListService {
       return;
     }
 
+    liste.movies = liste.movies.filter(val => {
+      return val !== idMovie;
+    });
+
+    this.updateMoviesForList(liste);
 
   }
 
