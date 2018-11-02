@@ -1,4 +1,12 @@
-h1 {
+#liste {
   color:white;
-  text-align: center;
+  padding:20px;
+}
+
+.details ul{
+  list-style: none;
+}
+
+.details ul li {
+  line-height: 2em;
 }

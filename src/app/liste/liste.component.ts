@@ -62,7 +62,6 @@ export class ListeComponent implements OnInit {
                 }
               );
             }
-
           });
         }
       });

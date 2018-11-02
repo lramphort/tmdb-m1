@@ -1,4 +1,4 @@
-<div *ngIf="currentList">
+<div id="liste" *ngIf="currentList">
   <h1>
 
     <span *ngIf="!editMode">
@@ -16,7 +16,7 @@
     </form>
   </h1>
 
-  <button (click)="addFilmsTempo()">Ajout</button>
+  <!--<button (click)="addFilmsTempo()">Ajout</button>-->
 
   <section class="details">
     <ul>
@@ -25,6 +25,9 @@
     </ul>
   </section>
 
+  <section class="films" *ngIf="listeFilmsTMDB">
+    <app-liste-film [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+  </section>
 
   <ul *ngIf="listeFilmsTMDB">
     <li *ngFor="let m of listeFilmsTMDB">

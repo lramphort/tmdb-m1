@@ -1,0 +1,11 @@
+<mat-card>
+  <img src="{{getPath()}}" />
+  <mat-card-header>
+    <mat-card-title>{{movie.title}} - <span *ngFor="let g of movie.genres">{{g.name}} </span></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Année : {{movie.release_date.slice(0,4)}}</p>
+    <p>Status : {{movie.status}}</p>
+    <p>Synopsis : {{movie.overview}}</p>
+  </mat-card-content>
+</mat-card>
