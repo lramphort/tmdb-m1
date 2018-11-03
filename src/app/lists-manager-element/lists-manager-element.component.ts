@@ -42,7 +42,7 @@ export class ListsManagerElementComponent implements OnInit {
   }
 
   changeName(): void {
-    this.mls.updateList(this.list.key, {name: this.newName});
+    this.mls.updateList(this.list.key, {name: this.list.name});
   }
 
 }

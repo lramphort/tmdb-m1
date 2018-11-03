@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase, AngularFireList, AngularFireObject, PathReference} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
 import {ListStructure} from './dataTypes/ListStructure';
-import {filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {User} from 'firebase';
 

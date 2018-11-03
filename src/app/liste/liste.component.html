@@ -12,7 +12,9 @@
     </span>
 
     <form (submit)="changeName()" *ngIf="editMode">
-      <input [(ngModel)]="newName" name="newName" matInput placeholder="{{currentList.name}}">
+      <mat-form-field >
+        <input [(ngModel)]="currentList.name" name="newName" matInput>
+      </mat-form-field>
     </form>
   </h1>
 

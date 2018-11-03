@@ -10,3 +10,9 @@
 .details ul li {
   line-height: 2em;
 }
+
+
+form input {
+  background-color: white;
+  color:black;
+}

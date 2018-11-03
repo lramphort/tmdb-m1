@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {TmdbService} from '../tmdb.service';
-import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 
 import {ActivatedRoute, Router} from '@angular/router';
 
@@ -11,7 +10,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RechercheComponent implements OnInit {
   valeurRecherchee: string;
-  listeFilmsRecherches: SearchMovieResponse;
   constructor(private tmdb: TmdbService, private route: ActivatedRoute, private router: Router) {
 
     this.route.queryParams.subscribe(params => {

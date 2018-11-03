@@ -3,11 +3,10 @@ import {ActivatedRoute} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
-import {Observable} from 'rxjs';
+import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 
-import {DialogDeleteListComponent, DialogData} from '../lists-manager-element/lists-manager-element.component';
+import {DialogDeleteListComponent} from '../lists-manager-element/lists-manager-element.component';
 import {MatDialog} from '@angular/material';
 import {MovieResponse} from '../tmdb-data/Movie';
 import {TmdbService} from '../tmdb.service';
@@ -91,7 +90,7 @@ export class ListeComponent implements OnInit {
   }
 
   changeName() {
-    this.mls.updateList(this.currentList.key, {name: this.newName});
+    this.mls.updateList(this.currentList.key, {name: this.currentList.name});
     this.editMode = false;
   }
 
