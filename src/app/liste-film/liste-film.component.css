@@ -1,0 +1,23 @@
+mat-card {
+  margin-bottom: 1em;
+  min-height: 200px;
+  padding-left:0px;
+}
+
+.actionButtons {
+  float:left;
+  display: flex;
+  flex-direction: column;
+  height:200px;
+  justify-content: center;
+}
+
+.actionButtons button:first-child {
+  margin-bottom:30px;
+}
+
+img {
+  float:left;
+  max-height: 200px;
+  margin-right:20px;
+}

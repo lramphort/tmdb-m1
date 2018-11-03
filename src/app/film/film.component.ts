@@ -27,6 +27,12 @@ export class FilmComponent implements OnInit {
   cast: MovieCast[];
 
 
+  lists: ListStructure[];
+  isInAList: boolean;
+
+
+
+
   constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
     this.movieId = +this.route.snapshot.paramMap.get('id');
     this.tmdb.getMovie(this.movieId).then(res => {
@@ -46,30 +52,35 @@ export class FilmComponent implements OnInit {
     this.tmdb.getMovieCredit(this.movieId).then(res => {
       this.cast = res.cast;
     });
-  }
 
-  ngOnInit() {}
+    this.movieList.getUser().subscribe(u => {
 
-  getListsWhereMovieBelong(movieId: number): string[] {
-    const tab: string[] = [];
-    this.movieList.getUser().subscribe( u => {
-      if (u) {
-        this.movieList.getUserLists().valueChanges().subscribe(lists => {
-          lists.forEach(list => {
-            if (this.isInTheList(movieId, list)) { tab.push(list.name.toString()); }
-          });
+      if (u) { // User is logged
+
+        this.movieList.getUserLists().valueChanges().subscribe( lists => {
+          this.lists = lists;
+          this.isInAList = false;
+
+          this.lists.forEach(l => this.isInTheList(l));
         });
       }
     });
-    return tab;
+
+
   }
 
-  isInAList(movieId: number): boolean {
-    if ([] === this.getListsWhereMovieBelong(movieId)) { return false; }
+  ngOnInit() {
+
   }
 
-  isInTheList(movieId: number, list: ListStructure): boolean {
-    return list.movies.reduce( (acc, v) => (acc || v === movieId), false);
+  isInTheList(list: ListStructure): boolean {
+
+      if (list.movies && list.movies.filter(m => m === this.movieId).length > 0) {
+        this.isInAList = true;
+        return true;
+      }
+
+    return false;
   }
 
   getPath(): string { return `https://image.tmdb.org/t/p/w500${this.poster_path}`; }
