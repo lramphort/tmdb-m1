@@ -1,11 +1,11 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" ([opened])="sideNavVisible">
+  <mat-sidenav #sidenav mode="side" ([opened])="sideNavVisible" >
     <app-lists-manager></app-lists-manager>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <header>
-      <button mat-fab (click)="sidenav.toggle();">
+      <button mat-fab (click)="sidenav.toggle();" [style.visibility]="user ? 'inherit' : 'hidden'">
         <mat-icon>list</mat-icon>
       </button>
       <app-recherche></app-recherche>
