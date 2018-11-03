@@ -17,6 +17,7 @@ import {MatButtonModule,
   MatSidenavModule,
   MatFormFieldModule,
   MatDialogModule,
+  MatMenuModule,
   MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
@@ -83,6 +84,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
+    MatMenuModule,
     MatSidenavModule,
     MatFormFieldModule,
     RouterModule.forRoot(

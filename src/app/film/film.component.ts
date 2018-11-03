@@ -4,9 +4,6 @@ import {TmdbService} from "../tmdb.service";
 import {MovieCast, MovieGenre, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
 import {MovieListService} from "../movie-list.service";
 import {ListStructure} from "../dataTypes/ListStructure";
-import {MatDialog} from "@angular/material";
-import {MatMenu} from "@angular/material";
-import {MatMenuTrigger} from "@angular/material";
 
 @Component({
   selector: 'app-film',
@@ -34,7 +31,7 @@ export class FilmComponent implements OnInit {
   isInAList: boolean;
 
 
-  constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
     this.movieId = +this.route.snapshot.paramMap.get('id');
     this.tmdb.getMovie(this.movieId).then(res => {
       this.title = res.title;
