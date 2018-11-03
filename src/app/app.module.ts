@@ -36,6 +36,7 @@ import { MovieListService } from './movie-list.service';
 import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent } from './liste-film/liste-film.component';
+import { AddFilmDialogComponent } from './add-film-dialog/add-film-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     ListsManagerElementComponent,
     DashboardComponent,
     DialogDeleteListComponent,
-    ListeFilmComponent
+    ListeFilmComponent,
+    AddFilmDialogComponent
   ],
   imports: [
     BrowserModule,
