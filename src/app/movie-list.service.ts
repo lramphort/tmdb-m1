@@ -69,8 +69,12 @@ export class MovieListService {
     if (!liste.movies) {
       liste.movies = [];
     }
-    liste.movies.push(idMovie);
-    this.updateMoviesForList(liste);
+
+    if (liste.movies.filter(m => m === idMovie).length === 0) {
+      liste.movies.push(idMovie);
+      this.updateMoviesForList(liste);
+    }
+
   }
 
   deleteMovie(liste: ListStructure, idMovie: number) {
