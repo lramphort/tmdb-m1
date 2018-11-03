@@ -1,9 +1,9 @@
 
 Connexion
 <br/>
-<button>Facebook</button> <br/>
-<button>Google</button> <br/>
-<button>Twitter</button> <br/>
+<button (click)="onClose() ; connectWithFacebook()">Facebook</button> <br/>
+<button (click)="onClose() ; connectWithGoogle()">Google</button> <br/>
+<button (click)="onClose() ; connectWithTwitter()">Twitter</button> <br/>
 <br/>
 
 <form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">

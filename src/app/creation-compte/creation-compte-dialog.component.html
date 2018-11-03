@@ -1,14 +1,14 @@
 
 Connexion
 <br/>
-<button>Facebook</button> <br/>
-<button>Google</button> <br/>
-<button>Twitter</button> <br/>
+<button (click)="onClose() ; connectWithFacebook()">Facebook</button> <br/>
+<button (click)="onClose() ; connectWithGoogle()">Google</button> <br/>
+<button (click)="onClose() ; connectWithTwitter()">Twitter</button> <br/>
 <br/>
 
 <form [formGroup]="form" (submit)="onSubmit()" #myForm="ngForm">
   <label>
-    <input type="text" [ngModel]="" name="email" formControlName="email" />
+    <input type="text" formControlName="email" />
     Email
     <small *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="text-danger">
       Adresse email requise

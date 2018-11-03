@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth} from 'firebase';
 
 /**
  * @title Dialog Overview
@@ -38,6 +40,7 @@ export class CreationCompteDialogComponent {
 
   constructor(
     public authService: AuthService,
+    public anAuth: AngularFireAuth,
     public router: Router,
     public dialogRef: MatDialogRef<CreationCompteDialogComponent>,
     //@Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -55,6 +58,18 @@ export class CreationCompteDialogComponent {
     }
   }
 
+
+  connectWithGoogle() {
+    this.anAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  connectWithFacebook() {
+    this.anAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+
+  connectWithTwitter() {
+    this.anAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+  }
 
   onClose(): void {
     this.dialogRef.close();

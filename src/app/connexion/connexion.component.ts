@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
+import {auth} from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 export interface DialogData {
   email: string;
@@ -46,6 +48,7 @@ export class ConnexionDialogComponent {
 
   constructor(
     public authService: AuthService,
+    public anAuth: AngularFireAuth,
     public router: Router,
     public dialogRef: MatDialogRef<ConnexionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -56,15 +59,28 @@ export class ConnexionDialogComponent {
     });
   }
 
-  onNoClick(): void {
+
+  connectWithGoogle() {
+    this.anAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  connectWithFacebook() {
+    this.anAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+
+  connectWithTwitter() {
+    this.anAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+  }
+
+  onClose(): void {
     this.dialogRef.close();
   }
 
   onSubmit() {
     this.authService.signInRegular(this.form.controls.email.value, this.form.controls.password.value)
       .then((res) => {
-        console.log(res);
-        this.router.navigate(['/']);
+        console.log('connexion réussie : ' + res);
+        //this.router.navigate(['/']);
         })
       .catch((err) => console.log('ERREUR connexion: ' + err));
     this.dialogRef.close();
