@@ -11,33 +11,22 @@
       <app-recherche></app-recherche>
       <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
     </header>
-    <nav *ngIf="!user">
-    <app-connexion></app-connexion>
-    <app-creation-compte></app-creation-compte>
-    </nav>
-    <router-outlet></router-outlet>
-    <nav *ngIf="user">
-      <label>{{user.displayName}}</label>
-      <img [src]="user.photoURL" />
-      <button (click)="logout()">Déconnection</button>
-      {{user.uid}}
-    </nav>
-    <nav *ngIf="!user">
-      <!--
+    <div class="login">
+      <div class="connexion" *ngIf="!user">
+        <app-connexion></app-connexion>
+        <app-creation-compte></app-creation-compte>
+      </div>
+      <div *ngIf="user">
+        <button mat-raised-button (click)="logout()">Déconnexion</button>
+      </div>
+    </div>
 
-      <app-actor></app-actor>-->
-    </nav>
-<!-- A SUPPRIMER-->
-<h1>TMDB + Firebase</h1>
-<nav *ngIf="user">
-  <label>{{user.displayName}}</label>
-  <img [src]="user.photoURL" />
-  <button (click)="logout()">Déconnection</button>
-  {{user.uid}}
-</nav>
-<nav *ngIf="!user">
-  <button (click)="login()">Connection via Google</button>
-</nav>
+    <section class="contenu">
+      <nav *ngIf="!user">
+        <button (click)="login()">Connection via Google</button>
+      </nav>
+      <router-outlet></router-outlet>
+    </section>
 
 
 
@@ -57,9 +46,7 @@ TODO : a supprimer d'ici la fin du projet
   <button (click)="logout()">Déconnection</button>
   {{user.uid}}
 </nav>
-<nav *ngIf="!user">
-  <button (click)="login()">Connection via Google</button>
-</nav>
+
 
 <hr/>
 <pre *ngIf="lists">

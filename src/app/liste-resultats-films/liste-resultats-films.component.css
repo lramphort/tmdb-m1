@@ -13,3 +13,7 @@ li {
 mat-card {
   margin:0.2cm;
 }
+
+a {
+  text-decoration: none;
+}
