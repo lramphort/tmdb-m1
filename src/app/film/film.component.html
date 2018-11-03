@@ -3,35 +3,24 @@
   <div class="gauche">
       <div><img [src]="getPath()" /></div>
       <!-- Code pour afficher l'ensemble des listes et savoir si un film est dedans où pas à titre de debug
-      <ul>
-        <li *ngFor="let l of lists">{{l.name}} <span *ngIf="isInTheList(l)">DEDANS !</span></li>
-      </ul>-->
+        <li *ngFor="let l of lists">{{l.name}} <span *ngIf="isInTheList(l)">DEDANS !</span></li> -->
       <div>
           <div class="gauche" *ngIf="!isInAList">
-
             <button  mat-icon-button [matMenuTriggerFor]="menu" class="centre">
               <mat-icon aria-label="plus icon">add</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item *ngFor="let list of getUserLists()"> {{list.name}} </button>
+              <button mat-menu-item *ngFor="let list of this.lists"> {{list.name}} </button>
             </mat-menu>
           </div>
+
           <div class="gauche" *ngIf="isInAList">
-            <button *ngIf="isInAList" mat-icon-button [matMenuTriggerFor]="menu" class="centre">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="centre">
               <mat-icon aria-label="list icon">event_note</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item *ngFor="let list of getUserLists()"> {{list.name}} </button>
+              <button mat-menu-item *ngFor="let list of this.lists"> <span *ngIf="isInTheList(list)">{{list.name}}</span> </button>
             </mat-menu>
-
-            <button *ngIf="isInAList" mat-icon-button class="centre">
-              <mat-icon aria-label="list icon">event_note</mat-icon>
-              <!-- si clique, afficher pop up avec listes qui contiennent le film -->
-              <!-- apres click sur une liste, page de la liste -->
-            </button>
-          </div>
-
-
 
           <div class="droite">
             <button mat-icon-button class="centre">
