@@ -19,9 +19,9 @@ export class CreationCompteComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CreationCompteDialogComponent/*, {
-      width: '250px'
-    }*/);
+    const dialogRef = this.dialog.open(CreationCompteDialogComponent, {
+      width: '400px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');

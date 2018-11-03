@@ -1,29 +1,27 @@
+<h1 mat-dialog-title>Connexion</h1>
 
-Connexion
-<br/>
-<button (click)="onClose() ; connectWithFacebook()">Facebook</button> <br/>
-<button (click)="onClose() ; connectWithGoogle()">Google</button> <br/>
-<button (click)="onClose() ; connectWithTwitter()">Twitter</button> <br/>
-<br/>
+<div class="social">
+  <button mat-raised-button disabled (click)="onClose() ; connectWithFacebook()">Facebook</button> <br/>
+  <button mat-raised-button (click)="onClose() ; connectWithGoogle()">Google</button> <br/>
+  <button mat-raised-button disabled (click)="onClose() ; connectWithTwitter()">Twitter</button> <br/>
+</div>
 
 <form [formGroup]="form" novalidate (submit)="onSubmit()" #myForm="ngForm">
-  <label>
-    <input type="text" [(ngModel)]="email" formControlName="email" />
-    Email
+
+    <mat-form-field>
+      <input matInput placeholder="Email" type="text" [(ngModel)]="email" formControlName="email" />
+    </mat-form-field>
     <small *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="text-danger">
       Email requis
     </small>
-  </label>
-  <br/>
-  <label>
-    <input type="password" [(ngModel)]="password" formControlName="password" />
-    Mot de passe
+
+    <mat-form-field>
+      <input matInput placeholder="Mot de passe" type="password" [(ngModel)]="password" formControlName="password" />
+    </mat-form-field>
     <small *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="text-danger">
       Mot de passe requis
     </small>
-  </label>
-  <br/>
-  <button type="submit" [disabled]="form.invalid">OK</button>
-  <a>J'ai oublié mon mot de passe</a>
-  <br/>
+
+  <p><button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">OK</button></p>
+  <p><a>J'ai oublié mon mot de passe</a></p>
 </form>

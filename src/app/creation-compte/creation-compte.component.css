@@ -6,3 +6,8 @@ textarea {
   height: 100px;
   resize: vertical;
 }
+
+
+.social button {
+  margin-bottom:10px;
+}
