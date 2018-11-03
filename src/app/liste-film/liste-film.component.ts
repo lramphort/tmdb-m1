@@ -20,4 +20,8 @@ export class ListeFilmComponent implements OnInit {
     return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`;
   }
 
+  deleteMovie() {
+
+  }
+
 }

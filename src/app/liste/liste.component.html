@@ -16,7 +16,7 @@
     </form>
   </h1>
 
-  <!--<button (click)="addFilmsTempo()">Ajout</button>-->
+
 
   <section class="details">
     <ul>
@@ -29,11 +29,6 @@
     <app-liste-film [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
   </section>
 
-  <ul *ngIf="listeFilmsTMDB">
-    <li *ngFor="let m of listeFilmsTMDB">
-      {{m.title}}
-    </li>
-  </ul>
 
 
 </div>

@@ -35,7 +35,6 @@ export class ListeComponent implements OnInit {
               private tmdb: TmdbService) { }
 
   ngOnInit() {
-
     this.route.queryParams.subscribe(params => {
 
       this.mls.getUser().subscribe(u => {
