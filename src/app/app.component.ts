@@ -47,6 +47,7 @@ export class AppComponent {
   logout() {
     this.anAuth.auth.signOut();
     this._user = undefined;
+    this.router.navigate(['']);
   }
 
   get user(): User {

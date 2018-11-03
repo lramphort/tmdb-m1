@@ -20,6 +20,9 @@ export class MovieListService {
     this.user = this.anAuth.user;
 
     this.user.subscribe( u => {
+      console.log("USER : ");
+      console.log(u);
+
 
       if (u) {
         this.uid = u.uid;

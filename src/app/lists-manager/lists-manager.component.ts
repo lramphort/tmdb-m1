@@ -29,6 +29,8 @@ export class ListsManagerComponent implements OnInit {
         ).subscribe(lists => {
           this.userLists = lists;
         });
+      } else {
+        this.userLists = null;
       }
     });
 
