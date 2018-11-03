@@ -65,6 +65,7 @@ export class MovieListService {
   }
 
   addMovie(liste: ListStructure, idMovie: number) {
+    console.log(idMovie, "vient de passer dans la liste avec la clef", liste.key);
     if (!liste.movies) {
       liste.movies = [];
     }

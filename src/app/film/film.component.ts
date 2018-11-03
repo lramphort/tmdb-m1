@@ -4,6 +4,7 @@ import {TmdbService} from "../tmdb.service";
 import {MovieCast, MovieGenre, ProductionCompany, ProductionCountry, SpokenLanguage} from "../tmdb-data/Movie";
 import {MovieListService} from "../movie-list.service";
 import {ListStructure} from "../dataTypes/ListStructure";
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-film',
@@ -29,9 +30,11 @@ export class FilmComponent implements OnInit {
 
   lists: ListStructure[];
   isInAList: boolean;
+  isUserLogged: boolean;
 
 
   constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
+    this.isUserLogged = false;
     this.movieId = +this.route.snapshot.paramMap.get('id');
     this.tmdb.getMovie(this.movieId).then(res => {
       this.title = res.title;
@@ -53,8 +56,16 @@ export class FilmComponent implements OnInit {
     });
 
     this.movieList.getUser().subscribe(u => {
+
+      this.isUserLogged = false;
+
       if (u) { // User is logged
-        this.movieList.getUserLists().valueChanges().subscribe(lists => {
+        this.isUserLogged = true;
+        this.movieList.getUserLists().snapshotChanges().pipe(
+          map( changes => {
+            return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
+          })
+        ).subscribe(lists => {
           this.lists = lists;
           this.isInAList = false;
           this.lists.forEach(l => this.isInTheList(l));
@@ -76,6 +87,10 @@ export class FilmComponent implements OnInit {
 
   getPath(): string {
     return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
+  }
+
+  addToList(list: ListStructure) {
+    this.movieList.addMovie(list, this.movieId);
   }
 }
 

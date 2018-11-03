@@ -5,28 +5,29 @@
       <!-- Code pour afficher l'ensemble des listes et savoir si un film est dedans où pas à titre de debug
         <li *ngFor="let l of lists">{{l.name}} <span *ngIf="isInTheList(l)">DEDANS !</span></li> -->
       <div>
-          <div class="gauche" *ngIf="!isInAList">
-            <button  mat-icon-button [matMenuTriggerFor]="menu" class="centre">
-              <mat-icon aria-label="plus icon">add</mat-icon>
+
+
+          <div class="gauche" *ngIf="isUserLogged">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="centre">
+              <mat-icon *ngIf="isInAList" aria-label="list icon">event_note</mat-icon>
+              <mat-icon *ngIf="!isInAList" aria-label="list icon">add</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item *ngFor="let list of this.lists"> {{list.name}} </button>
+
+              <button (click)="addToList(list)" style="color:black" mat-menu-item *ngFor="let list of this.lists">
+                <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
+                <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
+                <span>{{list.name}}</span>
+              </button>
+
             </mat-menu>
           </div>
-
-          <div class="gauche" *ngIf="isInAList">
-            <button mat-icon-button [matMenuTriggerFor]="menu" class="centre">
-              <mat-icon aria-label="list icon">event_note</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item *ngFor="let list of this.lists"> <span *ngIf="isInTheList(list)">{{list.name}}</span> </button>
-            </mat-menu>
-
           <div class="droite">
             <button mat-icon-button class="centre">
               <mat-icon aria-label="delete icon">delete</mat-icon>
             </button>
           </div>
+
       </div>
       <div>
           <div class="rating">
