@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TmdbService} from '../tmdb.service';
 import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-recherche',
@@ -10,9 +10,15 @@ import {Router} from '@angular/router';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent implements OnInit {
-  @Input() valeurRecherchee: string;
+  valeurRecherchee: string;
   listeFilmsRecherches: SearchMovieResponse;
-  constructor(private tmdb: TmdbService, private router: Router) { }
+  constructor(private tmdb: TmdbService, private route: ActivatedRoute, private router: Router) {
+
+    this.route.queryParams.subscribe(params => {
+      this.valeurRecherchee = params['searchText'];
+    });
+
+  }
 
   ngOnInit() {
   }
