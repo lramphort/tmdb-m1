@@ -48,9 +48,7 @@ export class FilmComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   getListsWhereMovieBelong(movieId: number): string[] {
     const tab: string[] = [];
