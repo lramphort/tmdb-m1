@@ -35,7 +35,7 @@ import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populai
 import { MovieListService } from './movie-list.service';
 import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListeFilmComponent } from './liste-film/liste-film.component';
+import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
 
 
 const appRoutes: Routes = [
@@ -66,7 +66,8 @@ const appRoutes: Routes = [
     ListsManagerElementComponent,
     DashboardComponent,
     DialogDeleteListComponent,
-    ListeFilmComponent
+    ListeFilmComponent,
+    DialogDeleteMovieComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +100,8 @@ const appRoutes: Routes = [
   entryComponents: [
     CreationCompteDialogComponent,
     ConnexionDialogComponent,
-    DialogDeleteListComponent]
+    DialogDeleteListComponent,
+    DialogDeleteMovieComponent
+  ]
 })
 export class AppModule { }
