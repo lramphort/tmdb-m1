@@ -2,6 +2,9 @@ import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
+import {Router} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth} from 'firebase';
 
 /**
  * @title Dialog Overview
@@ -37,6 +40,8 @@ export class CreationCompteDialogComponent {
 
   constructor(
     public authService: AuthService,
+    public anAuth: AngularFireAuth,
+    public router: Router,
     public dialogRef: MatDialogRef<CreationCompteDialogComponent>,
     //@Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: FormBuilder) {
@@ -47,12 +52,24 @@ export class CreationCompteDialogComponent {
     }, {matchPasswords: this.matchPasswords});
   }
 
-  matchPasswords(c: AbstractControl): { invalid: boolean } {
+  matchPasswords(c: AbstractControl): { [key: string]: boolean } {
     if (c.get('password').value !== c.get('password2').value) {
-      return {invalid: true};
+      return {matchPasswords: true};
     }
   }
 
+
+  connectWithGoogle() {
+    this.anAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  connectWithFacebook() {
+    this.anAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+
+  connectWithTwitter() {
+    this.anAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+  }
 
   onClose(): void {
     this.dialogRef.close();
@@ -60,16 +77,14 @@ export class CreationCompteDialogComponent {
 
   onSubmit() {
 
-    this.authService.createAccount(this.form.controls.email.value, this.form.controls.password.value);
-
-    /*
-    this.authService.signInRegular(this.user.email, this.user.password)
+    this.authService.createAccount(this.form.controls.email.value, this.form.controls.password.value)
       .then((res) => {
         console.log(res);
-        //this.router.navigate(['dashboard']);
-        })
-      .catch((err) => console.log('error on signin: ' + err));
-      */
+        this.router.navigate(['/']);
+      })
+      .catch((err) => console.log('ERREUR creation-compte: ' + err));
+    this.dialogRef.close();
+
   }
 
 }

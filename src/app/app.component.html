@@ -46,7 +46,9 @@ TODO : a supprimer d'ici la fin du projet
   <button (click)="logout()">Déconnection</button>
   {{user.uid}}
 </nav>
-
+<nav *ngIf="!user">
+  <button (click)="login()">Connection via Google</button>
+</nav>
 
 <hr/>
 <pre *ngIf="lists">
