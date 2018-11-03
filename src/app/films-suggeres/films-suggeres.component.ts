@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TmdbService} from '../tmdb.service';
 import {MovieResponse} from '../tmdb-data/Movie';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-films-suggeres',
@@ -42,12 +43,17 @@ export class FilmsSuggeresComponent implements OnInit {
 
     for (const j in listId) {
       this.tmdb.getMovie(listId[j]).then( res => {
-        listResult.push(res);
-      });
+        if (!res.adult) {
+          listResult.push(res);
+        }
+      })
+        .catch(any => {});
 
     }
     return listResult;
 
   }
+
+  getPath(s: string): string { return "https://image.tmdb.org/t/p/w500" + s; }
 
 }
