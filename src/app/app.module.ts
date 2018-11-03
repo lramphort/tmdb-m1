@@ -35,8 +35,6 @@ import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populai
 import { MovieListService } from './movie-list.service';
 import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListeFilmComponent } from './liste-film/liste-film.component';
-import { AddFilmDialogComponent } from './add-film-dialog/add-film-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -67,8 +65,15 @@ const appRoutes: Routes = [
     ListsManagerElementComponent,
     DashboardComponent,
     DialogDeleteListComponent,
+<<<<<<< HEAD
     ListeFilmComponent,
     AddFilmDialogComponent
+||||||| merged common ancestors
+    ListeFilmComponent
+=======
+    ListeFilmComponent,
+    DialogDeleteMovieComponent
+>>>>>>> 3e999ad18af21b10c355aa6041aac76dc6c50846
   ],
   imports: [
     BrowserModule,
@@ -101,6 +106,8 @@ const appRoutes: Routes = [
   entryComponents: [
     CreationCompteDialogComponent,
     ConnexionDialogComponent,
-    DialogDeleteListComponent]
+    DialogDeleteListComponent,
+    DialogDeleteMovieComponent
+  ]
 })
 export class AppModule { }

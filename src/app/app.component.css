@@ -7,6 +7,10 @@ mat-sidenav-container {
   background-image: url("../assets/bkg.jpg ");
 }
 
+.contenu {
+  margin:0.5cm;
+}
+
 mat-sidenav {
   padding:0 0.5cm 0 0.5cm;
   background-color: #111;
@@ -20,4 +24,18 @@ header {
   padding:0.5cm;
 }
 
+.login {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding:0.5cm;
+}
 
+app-connexion {
+  margin-right:0.2cm;
+}
+
+.connexion {
+  display:flex;
+  flex-direction: row;
+}

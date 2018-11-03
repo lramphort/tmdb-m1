@@ -6,8 +6,9 @@
     <a routerLink="/movie/{{m.id}}">
       <mat-card>
         <mat-card-header>
-          {{m.title}}
+          <img src="https://image.tmdb.org/t/p/w92/{{m.poster_path}}" /> {{m.title}}
         </mat-card-header>
+        <ng-container *ngFor="let g of m.genres">{{g.name}}, </ng-container>
       </mat-card>
     </a>
   </li>

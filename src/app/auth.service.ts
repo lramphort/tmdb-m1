@@ -27,11 +27,7 @@ export class AuthService {
   }
 
   createAccount(email: string, password: string) {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      //const errorCode = error.code;
-      //const errorMessage = error.message;
-    });
+    return this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
 
