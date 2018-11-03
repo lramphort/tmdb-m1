@@ -12,6 +12,7 @@ li {
 
 mat-card {
   margin:0.2cm;
+  max-width: 10cm;
 }
 
 a {

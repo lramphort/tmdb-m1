@@ -9,6 +9,16 @@
     </a>
   </li>
 
+  <li *ngFor="let p of currentPeopleSearchRes.results">
+    <a routerLink="/actor/{{p.id}}">
+      <mat-card>
+        <mat-card-header>
+          {{p.name}}
+        </mat-card-header>
+      </mat-card>
+    </a>
+  </li>
+
 </ul>
 
 

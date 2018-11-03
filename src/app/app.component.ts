@@ -23,7 +23,7 @@ export class AppComponent {
   constructor(private tmdb: TmdbService,
               public anAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router,
+              private router: Router
               ) {
     this.sideNavVisible = false;
     tmdb.init('25ea93320b0ede2eb2ce7b2661886a0e');
@@ -46,7 +46,7 @@ export class AppComponent {
 
   logout() {
     this.anAuth.auth.signOut();
-    this._user = undefined;
+    //this._user = undefined;
     this.router.navigate(['']);
   }
 

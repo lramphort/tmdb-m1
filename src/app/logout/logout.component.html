@@ -1,0 +1,14 @@
+<button class="person" mat-button [matMenuTriggerFor]="menu">
+  <mat-icon>person</mat-icon> {{_user.displayName}}
+</button>
+<mat-menu #menu="matMenu" [overlapTrigger]="false">
+  <button mat-menu-item disabled>
+    <span>Profil</span>
+  </button>
+  <button mat-menu-item disabled>
+    <span>PAramètre</span>
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    <span>Déconnexion</span>
+  </button>
+</mat-menu>

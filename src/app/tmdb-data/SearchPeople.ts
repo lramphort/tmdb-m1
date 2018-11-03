@@ -17,9 +17,9 @@ export interface SearchPeopleResponse {
     adult?: boolean;
     id?: number;
     known_for?: MovieResult | (TVResult & {media_type: string; /* Allowed Values: tv */});
+    name?: string;
+    popularity?: number;
   }[];
-  name?: string;
-  popularity?: number;
   total_results?: number;
   total_pages?: number;
 }

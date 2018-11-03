@@ -17,10 +17,11 @@ import {MatButtonModule,
   MatSidenavModule,
   MatFormFieldModule,
   MatDialogModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule,
+  MatMenuModule } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
-import { ListeResultatsFilmsComponent } from './liste-resultats-films/liste-resultats-films.component';
+import { ListeResultatsRechercheComponent } from './liste-resultats-recherche/liste-resultats-recherche.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
 import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connexion.component';
@@ -36,11 +37,12 @@ import { MovieListService } from './movie-list.service';
 import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: DashboardComponent},
-  {path: 'search', component: ListeResultatsFilmsComponent},
+  {path: 'search', component: ListeResultatsRechercheComponent},
   {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent},
   {path: 'list', component: ListeComponent},
@@ -51,7 +53,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     FilmComponent,
-    ListeResultatsFilmsComponent,
+    ListeResultatsRechercheComponent,
     RechercheComponent,
     ListsManagerComponent,
     ActorComponent,
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     DialogDeleteListComponent,
     ListeFilmComponent,
-    DialogDeleteMovieComponent
+    DialogDeleteMovieComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,7 @@ const appRoutes: Routes = [
     MatIconModule,
     MatSidenavModule,
     MatFormFieldModule,
+    MatMenuModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}
