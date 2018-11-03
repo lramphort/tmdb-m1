@@ -40,6 +40,7 @@ import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/lis
 import { LogoutComponent } from './logout/logout.component';
 
 
+
 const appRoutes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'search', component: ListeResultatsRechercheComponent},
