@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build_prod": "npm run build --prod && browserify -s main dist/main.js > dist/bundle.js && npm run minify",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
