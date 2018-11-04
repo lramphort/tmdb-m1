@@ -25,8 +25,11 @@ export class ListeFilmComponent implements OnInit {
   ngOnInit() {
   }
 
-  getPath(path: string): string {
-    return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`;
+  getPath(): string {
+      if (this.movie.poster_path) {
+        return `https://image.tmdb.org/t/p/w500${this.movie.poster_path}`;
+      }
+      return "/assets/mockup_poster.jpg";
   }
 
   deleteMovie() {

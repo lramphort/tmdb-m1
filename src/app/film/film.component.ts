@@ -86,7 +86,10 @@ export class FilmComponent implements OnInit {
   }
 
   getPath(): string {
-    return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
+    if (this.poster_path) {
+      return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
+    }
+    return "/assets/mockup_poster.jpg";
   }
 
   addToList(list: ListStructure) {

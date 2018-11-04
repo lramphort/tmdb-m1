@@ -54,6 +54,13 @@ export class FilmsSuggeresComponent implements OnInit {
 
   }
 
-  getPath(s: string): string { return "https://image.tmdb.org/t/p/w500" + s; }
+  getPath(s: string): string {
+    if (s) {
+      return "https://image.tmdb.org/t/p/w92/" + s;
+    } else {
+      return "/assets/mockup_poster_tiny.jpg";
+    }
+
+  }
 
 }
