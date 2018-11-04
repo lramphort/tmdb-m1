@@ -65,7 +65,9 @@ export class ConnexionDialogComponent {
   }
 
   connectWithFacebook() {
-    this.anAuth.auth.signInWithPopup(new auth.FacebookAuthProvider());
+    this.anAuth.auth.signInWithPopup(new auth.FacebookAuthProvider()).then(value => {
+      console.log(value);
+    });
   }
 
   connectWithTwitter() {

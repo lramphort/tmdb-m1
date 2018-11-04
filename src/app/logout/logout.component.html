@@ -1,4 +1,4 @@
-<button class="person" mat-button [matMenuTriggerFor]="menu">
+<button class="person" *ngIf="_user" mat-button [matMenuTriggerFor]="menu">
   <mat-icon>person</mat-icon> {{_user.displayName}}
 </button>
 <mat-menu #menu="matMenu" [overlapTrigger]="false">

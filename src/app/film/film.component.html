@@ -55,7 +55,7 @@
   <div class="droite">
       <h1>{{title}}</h1>
       <ul>
-        <li> Année :                    {{annee}} </li>
+        <li> Année :                    {{annee.slice(0,4)}} </li>
         <li> Status :                   {{status}} </li>
         <li> Compagnies de production :
             <ng-container *ngFor="let cp of compagnies">
