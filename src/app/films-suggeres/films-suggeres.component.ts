@@ -22,7 +22,9 @@ export class FilmsSuggeresComponent implements OnInit {
 
   ngOnInit() {
 
-    this.tmdb.getLatestMovie().then(res =>  {
+    this.tmdb.getLatestMovie( {
+      language: "fr-FR",
+    }).then(res =>  {
       this.latestId = res.id;
       this.movieList = this.get10RandomMovies();
     });
@@ -42,7 +44,9 @@ export class FilmsSuggeresComponent implements OnInit {
     }
 
     for (const j in listId) {
-      this.tmdb.getMovie(listId[j]).then( res => {
+      this.tmdb.getMovie(listId[j], {
+        language: "fr-FR"
+      }).then( res => {
         if (!res.adult) {
           listResult.push(res);
         }
