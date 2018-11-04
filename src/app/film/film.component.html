@@ -1,29 +1,30 @@
-<div id="Global" *ngIf="movieId">
+<div class="Global" *ngIf="movieId">
 
   <div class="gauche">
-      <div><img [src]="getPath()" /></div>
-      <!-- Code pour afficher l'ensemble des listes et savoir si un film est dedans où pas à titre de debug
-        <li *ngFor="let l of lists">{{l.name}} <span *ngIf="isInTheList(l)">DEDANS !</span></li> -->
-      <div>
+      <div class="poster">
+        <img [src]="getPath()" />
+      </div>
 
+      <div class="actions">
 
-          <div class="gauche" *ngIf="isUserLogged">
-            <button mat-icon-button [matMenuTriggerFor]="menu" class="centre">
+          <div class="addLists" *ngIf="isUserLogged">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon *ngIf="isInAList" aria-label="list icon">event_note</mat-icon>
               <mat-icon *ngIf="!isInAList" aria-label="list icon">add</mat-icon>
             </button>
-            <mat-menu #menu="matMenu">
 
-              <button (click)="addToList(list)" style="color:black" mat-menu-item *ngFor="let list of this.lists">
+            <mat-menu #menu="matMenu">
+              <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
                 <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
                 <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
                 <span>{{list.name}}</span>
               </button>
-
             </mat-menu>
+
           </div>
-          <div class="droite">
-            <button mat-icon-button class="centre">
+
+          <div class="delete">
+            <button mat-icon-button>
               <mat-icon aria-label="delete icon">delete</mat-icon>
             </button>
           </div>
@@ -66,14 +67,14 @@
             {{l.name}}  ,
           </ng-container>
         </li>
-        <li> Revenue :                  {{revenue}} </li>
-        <li> Budget :                   {{bugdet}} </li>
+        <li> Revenu :                  {{revenue | currency:'USD':'symbol':'1.0-0'}} </li>
+        <li> Budget :                   {{bugdet | currency:'USD':'symbol':'1.0-0'}} </li>
         <li> Acteurs :
             <ng-container *ngFor="let c of cast">
               {{c.name}} ,
             </ng-container>
         </li>
-        <li> Synopsis :                 {{synopsis}} </li>
+        <li class="synopsis"> Synopsis :                 {{synopsis}} </li>
       </ul>
   </div>
 </div>

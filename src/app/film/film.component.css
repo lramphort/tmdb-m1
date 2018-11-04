@@ -2,35 +2,11 @@ div {
   color: #FFF;
   font: 14px Verdana, sans-serif;
 }
-.gauche {
-  float:left;
-  width:50%;
-}
-.droite {
-  margin-left:50%
-}
+
 ul {
   line-height:200%
 }
-.centre {
-  display: block;
-  margin : auto;
-}
-img {
-  display:block;
-  width: 40%;
-  height: 40%;
-  margin-left:auto;
-  margin-right:auto;
-}
 
-.note {
-  float:right;
-  padding-right:275px;
-  padding-top:17px;
-  font-family: "Calibri Light";
-  font-size:2em;
-}
 
 .rating{
   float:left;
@@ -50,4 +26,54 @@ img {
 .rating a:focus ~ a {
   color: orange;
   cursor: pointer;
+}
+
+
+mat-menu button {
+  color:black;
+}
+
+.droite ul {
+  list-style: none;
+  padding:0px;
+  margin:0px;
+}
+
+.synopsis {
+  margin-top:20px;
+}
+
+
+
+
+.Global {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+
+.gauche {
+  max-width: 25vw;
+}
+
+.droite {
+  max-width: 50vw;
+}
+
+.gauche img {
+  max-width:25vw;
+  /*max-height:50vh;*/
+}
+
+.gauche .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.gauche .note {
+  font-family: "Calibri Light";
+  font-size:2em;
+  text-align: center;
 }

@@ -36,7 +36,9 @@ export class FilmComponent implements OnInit {
   constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
     this.isUserLogged = false;
     this.movieId = +this.route.snapshot.paramMap.get('id');
-    this.tmdb.getMovie(this.movieId).then(res => {
+    this.tmdb.getMovie(this.movieId, {
+      language: "fr-FR"
+    }).then(res => {
       this.title = res.title;
       this.annee = res.release_date;
       this.status = res.status;
