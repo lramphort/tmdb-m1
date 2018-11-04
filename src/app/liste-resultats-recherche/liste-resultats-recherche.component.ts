@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TmdbService} from '../tmdb.service';
 import {SearchMovieResponse} from '../tmdb-data/searchMovie';
 import {SearchPeopleResponse} from '../tmdb-data/SearchPeople';
+import {MovieGenre} from '../tmdb-data/Movie';
 
 @Component({
   selector: 'app-liste-resultats-films',
@@ -11,6 +12,7 @@ import {SearchPeopleResponse} from '../tmdb-data/SearchPeople';
 })
 export class ListeResultatsRechercheComponent implements OnInit {
   currentSearchRes: SearchMovieResponse;
+  genresId: number[];
   currentPeopleSearchRes: SearchPeopleResponse;
   constructor(private routeur: Router,
               private route: ActivatedRoute,
@@ -23,8 +25,15 @@ export class ListeResultatsRechercheComponent implements OnInit {
         query: params['searchText']
       }).then(
         res => {
-
+          this.genresId = [];
           this.currentSearchRes = res;
+          this.currentSearchRes.results.forEach(result => {
+            result.genre_ids.forEach(genre => {
+              if (!this.genresId.includes(genre)) {
+                this.genresId.push(genre);
+              }
+            });
+          });
         }
       );
 

@@ -1,4 +1,7 @@
 <ul *ngIf="currentSearchRes">
+
+  <ng-container *ngFor="let g of genresId">{{g}} / </ng-container>
+
   <li *ngFor="let m of currentSearchRes.results">
     <a routerLink="/movie/{{m.id}}">
       <mat-card>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {MovieCreditsResponse, MovieQuery, MovieResponse} from './tmdb-data/Movie';
+import {MovieCreditsResponse, MovieGenre, MovieGenresResponse, MovieQuery, MovieResponse} from './tmdb-data/Movie';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {PersonQuery, PersonResponse} from './tmdb-data/Person';
+import {PersonCreditResponse, PersonImageResponse, PersonQuery, PersonResponse} from './tmdb-data/Person';
 import {SearchMovieQuery, SearchMovieResponse} from './tmdb-data/searchMovie';
 import {SearchPeopleQuery, SearchPeopleResponse} from './tmdb-data/SearchPeople';
 import {TVQuery, TVResponse} from './tmdb-data/TV';
@@ -25,6 +25,8 @@ function AlxToObjectString(data: Object): {[key: string]: string} {
 export class TmdbService {
   private api_key: string;
 
+  public genres: MovieGenre[];
+
   private async get<T>(url: string, data: Object): Promise<HttpResponse<T>> {
     return this._http.get<T>( url, {
       observe: 'response',
@@ -36,6 +38,11 @@ export class TmdbService {
 
   init(key: string): this {
     this.api_key = key;
+
+    /*this.getMovieGenres().then(res => {
+      this.genres = res.genres;
+    })*/
+
     return this;
   }
 
@@ -66,6 +73,12 @@ export class TmdbService {
     return res.body;
   }
 
+  async getMovieGenres(): Promise<MovieGenresResponse> {
+    const url = `${tmdbApi}/genres/movie/list`;
+    const res = await this.get<MovieGenresResponse>(url, {language: "fr-FR"});
+    return res.body;
+  }
+
   // _______________________________________________________________________________________________________________________________________
   // Person / People _______________________________________________________________________________________________________________________
   // _______________________________________________________________________________________________________________________________________
@@ -84,6 +97,18 @@ export class TmdbService {
   async searchPerson(query: SearchPeopleQuery): Promise<SearchPeopleResponse> {
     const url = `${tmdbApi}/search/person`;
     const res = await this.get<SearchPeopleResponse>(url, query);
+    return res.body;
+  }
+
+  async getPersonImages(id: number): Promise<PersonImageResponse> {
+    const url = `${tmdbApi}/person/${id}/images`;
+    const res = await this.get<PersonImageResponse>(url, null);
+    return res.body;
+  }
+
+  async getPersonCredit(id: number, options?: PersonQuery): Promise<PersonCreditResponse> {
+    const url = `${tmdbApi}/person/${id}/movie_credits`;
+    const res = await this.get<PersonCreditResponse>(url, options);
     return res.body;
   }
 

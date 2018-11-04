@@ -1,3 +1,26 @@
-<p>
-  actor works!
-</p>
+<div *ngIf="actor" class="actor-info">
+  <div class="picture">
+    <img src="{{getProfilePic()}}">
+  </div>
+  <div class="infos">
+    <h1>{{actor.name}}</h1>
+    <div class="birthday">{{actor.birthday}} <ng-container *ngIf="actor.deathday"> - {{actor.deathday}}</ng-container></div>
+    <div class="nationality">{{actor.place_of_birth}}</div>
+  </div>
+</div>
+
+<h2>Filmographie</h2>
+<ul *ngIf="movies">
+  <li *ngFor="let m of movies">
+
+    <mat-card>
+      <mat-card-content>
+        <img src="{{getPath(m.poster_path)}}" />
+        <div class="title">{{m.title}}</div>
+        <div class="genres"><ng-container *ngFor="let g of m.genres">{{g.name}} </ng-container></div>
+        <button mat-stroked-button [routerLink]="['/movie/'+m.id]">Go</button>
+      </mat-card-content>
+    </mat-card>
+  </li>
+
+</ul>

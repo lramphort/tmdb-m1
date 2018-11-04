@@ -79,3 +79,7 @@ export interface MovieCreditsResponse {
   cast?: MovieCast[];
   crew?: MovieCrew[];
 }
+
+export interface MovieGenresResponse {
+  genres: MovieGenre[];
+}
