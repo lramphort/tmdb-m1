@@ -1,0 +1,16 @@
+h3 {
+  color:white;
+}
+
+mat-card-content {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nom {
+  width: 40%;
+  font-size: 130%;
+  font-weight: bold;
+}

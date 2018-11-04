@@ -1,15 +1,13 @@
 
-<p>Acteurs populaires :</p>
+<h3>Acteurs populaires :</h3>
 
 <ul *ngIf="personList">
   <li *ngFor="let p of personList.results">
-    <a routerLink="/actor/{{p.id}}">
-      <mat-card>
-        <mat-card-header>
-          {{p.name}}
-        </mat-card-header>
-      </mat-card>
-    </a>
+    <mat-card>
+      <mat-card-content>
+        <div class="nom">{{p.name}}</div>
+        <button mat-stroked-button [routerLink]="['/actor/'+p.id]">Go</button>
+      </mat-card-content>
+    </mat-card>
   </li>
-
 </ul>

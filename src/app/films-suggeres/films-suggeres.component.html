@@ -1,17 +1,17 @@
 
-<p>Vous aimerez sûrement :</p>
+<h3>Vous aimerez sûrement :</h3>
 
 <ul *ngIf="movieList">
   <li *ngFor="let m of movieList">
-    <a routerLink="/movie/{{m.id}}">
+
       <mat-card>
-        <mat-card-header>
-          <!-- <img src="https://image.tmdb.org/t/p/w92/{{m.poster_path}}" /> {{m.title}} -->
-          <img src="{{getPath(m.poster_path)}}" /> {{m.title}}
-        </mat-card-header>
-        <ng-container *ngFor="let g of m.genres">{{g.name}}, </ng-container>
+        <mat-card-content>
+          <img src="{{getPath(m.poster_path)}}" />
+          <div class="title">{{m.title}}</div>
+          <div class="genres"><ng-container *ngFor="let g of m.genres">{{g.name}} </ng-container></div>
+          <button mat-stroked-button [routerLink]="['/movie/'+m.id]">Go</button>
+        </mat-card-content>
       </mat-card>
-    </a>
   </li>
 
 </ul>
