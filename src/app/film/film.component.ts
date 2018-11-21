@@ -26,10 +26,6 @@ export class FilmComponent implements OnInit {
   poster_path: string;
   vote_average: number;
   cast: MovieCast[];
-
-
-  lists: ListStructure[];
-  isInAList: boolean;
   isUserLogged: boolean;
 
 
@@ -56,35 +52,9 @@ export class FilmComponent implements OnInit {
     this.tmdb.getMovieCredit(this.movieId).then(res => {
       this.cast = res.cast;
     });
-
-    this.movieList.getUser().subscribe(u => {
-
-      this.isUserLogged = false;
-
-      if (u) { // User is logged
-        this.isUserLogged = true;
-        this.movieList.getUserLists().snapshotChanges().pipe(
-          map( changes => {
-            return changes.map(c => ({key: c.payload.key, ...c.payload.val()}));
-          })
-        ).subscribe(lists => {
-          this.lists = lists;
-          this.isInAList = false;
-          this.lists.forEach(l => this.isInTheList(l));
-        });
-      }
-    });
   }
 
   ngOnInit() {
-  }
-
-  isInTheList(list: ListStructure): boolean {
-    if (list.movies && list.movies.filter(m => m === this.movieId).length > 0) {
-      this.isInAList = true;
-      return true;
-    }
-    return false;
   }
 
   getPath(): string {
@@ -92,10 +62,6 @@ export class FilmComponent implements OnInit {
       return `https://image.tmdb.org/t/p/w500${this.poster_path}`;
     }
     return "/assets/mockup_poster.jpg";
-  }
-
-  addToList(list: ListStructure) {
-    this.movieList.addMovie(list, this.movieId);
   }
 }
 

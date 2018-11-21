@@ -6,29 +6,7 @@
       </div>
 
       <div class="actions">
-
-          <div class="addLists" *ngIf="isUserLogged">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon *ngIf="isInAList" aria-label="list icon">event_note</mat-icon>
-              <mat-icon *ngIf="!isInAList" aria-label="list icon">add</mat-icon>
-            </button>
-
-            <mat-menu #menu="matMenu">
-              <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
-                <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
-                <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
-                <span>{{list.name}}</span>
-              </button>
-            </mat-menu>
-
-          </div>
-
-          <div class="delete">
-            <button mat-icon-button>
-              <mat-icon aria-label="delete icon">delete</mat-icon>
-            </button>
-          </div>
-
+        <app-add-film  [movieId]="movieId"></app-add-film>
       </div>
       <div>
           <!--<div class="rating">
