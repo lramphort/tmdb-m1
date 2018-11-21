@@ -68,7 +68,7 @@
           </ng-container>
         </li>
         <li> Revenu :                  {{revenue | currency:'USD':'symbol':'1.0-0'}} </li>
-        <li> Budget :                   {{bugdet | currency:'USD':'symbol':'1.0-0'}} </li>
+        <li> Budget : {{budget | currency:'USD':'symbol':'1.0-0'}}</li>
         <li> Acteurs :
             <ng-container *ngFor="let c of cast">
               {{c.name}} ,

@@ -21,7 +21,7 @@ export class FilmComponent implements OnInit {
   pays: ProductionCountry[];
   langues: SpokenLanguage[];
   revenue: number;
-  bugdet: number;
+  budget: number;
   synopsis: string;
   poster_path: string;
   vote_average: number;
@@ -43,7 +43,7 @@ export class FilmComponent implements OnInit {
       this.annee = res.release_date;
       this.status = res.status;
       this.revenue = res.revenue;
-      this.bugdet = res.budget;
+      this.budget = res.budget;
       this.synopsis = res.overview;
       this.genre = res.genres;
       this.compagnies = res.production_companies;
