@@ -38,6 +38,7 @@ import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-m
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddFilmComponent } from './add-film/add-film.component';
 
 
 
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     DialogDeleteListComponent,
     ListeFilmComponent,
     DialogDeleteMovieComponent,
-    LogoutComponent
+    LogoutComponent,
+    AddFilmComponent
   ],
   imports: [
     BrowserModule,
