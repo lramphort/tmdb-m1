@@ -16,7 +16,7 @@ export class ListeResultatsRechercheComponent implements OnInit {
   currentPeopleSearchRes: SearchPeopleResponse;
   constructor(private routeur: Router,
               private route: ActivatedRoute,
-              private tmdb: TmdbService) { }
+              public tmdb: TmdbService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -47,5 +47,6 @@ export class ListeResultatsRechercheComponent implements OnInit {
 
     });
   }
+
 
 }

@@ -1,16 +1,23 @@
 <ul *ngIf="currentSearchRes">
 
-  <ng-container *ngFor="let g of genresId">{{g}} / </ng-container>
+
 
   <li *ngFor="let m of currentSearchRes.results">
-    <a routerLink="/movie/{{m.id}}">
+
+
       <mat-card>
-        <mat-card-header>
-          {{m.title}}
-        </mat-card-header>
+        <mat-card-content>
+          <a [routerLink]="['/movie/'+m.id]" >
+            <img src="{{tmdb.getTinyPoster(m.poster_path)}}" />
+            <div class="title">{{m.title}}</div>
+          </a>
+
+          <app-add-film></app-add-film>
+        </mat-card-content>
       </mat-card>
-    </a>
+
   </li>
+
 
   <li *ngFor="let p of currentPeopleSearchRes.results">
     <a routerLink="/actor/{{p.id}}">
