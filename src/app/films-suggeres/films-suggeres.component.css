@@ -18,3 +18,12 @@ mat-card-content {
 .genres {
   width: 20%;
 }
+
+ul {
+  list-style: none;
+  padding:0px;
+}
+
+li {
+  margin-bottom:0.2cm;
+}
