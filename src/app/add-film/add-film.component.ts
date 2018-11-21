@@ -55,9 +55,10 @@ export class AddFilmComponent implements OnInit {
     return false;
   }
 
-  createList() {
+  AddFilmToANewList() {
     const l: ListStructure = new ListStructure();
     l.name = this.newList;
+    l.movies.push(this.movieId);
     this.movieList.createList(l);
     this.newList = "";
   }
