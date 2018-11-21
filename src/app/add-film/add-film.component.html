@@ -4,12 +4,14 @@
   </button>
 
   <mat-menu #menu="matMenu">
-    <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
+
+    <button (click)="addToOrRemoveFromList(list)" mat-menu-item *ngFor="let list of this.lists">
       <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
-      <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
+      <mat-icon *ngIf="isInTheList(list)"  >check_box</mat-icon>
       <span>{{list.name}}</span>
     </button>
-    <form (submit)="AddFilmToANewList()">
+
+    <form (submit)="AddToANewList()">
       <input [(ngModel)]="newList" name="newList" mat-menu-item placeholder="nouvelle liste">
      </form>
   </mat-menu>
