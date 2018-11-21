@@ -13,7 +13,7 @@
           <a [routerLink]="['/movie/'+m.id]" >
             <img src="{{tmdb.getTinyPoster(m.poster_path)}}" />
             <div class="title">{{m.title}}</div>
-            <div class="genres"><ng-container *ngFor="let g of m.genre_ids">{{tmdb.getMovieGenreName(g)}} </ng-container></div>
+            <div class="genres"><span *ngFor="let g of m.genre_ids">{{tmdb.getMovieGenreName(g)}} </span></div>
           </a>
 
           <app-add-film></app-add-film>
