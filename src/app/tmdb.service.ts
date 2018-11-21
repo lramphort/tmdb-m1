@@ -127,4 +127,19 @@ export class TmdbService {
     return res.body;
   }
 
+  getTinyPoster(s: string): string {
+      if (s) {
+        return "https://image.tmdb.org/t/p/w92/" + s;
+      } else {
+        return "/assets/mockup_poster_tiny.jpg";
+      }
+    }
+
+  getLargePoster(s: string): string {
+    if (s) {
+      return "https://image.tmdb.org/t/p/w500" + s;
+    } else {
+      return "/assets/mockup_poster.jpg";
+    }
+  }
 }

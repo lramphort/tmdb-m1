@@ -1,8 +1,19 @@
 <ul *ngIf="currentSearchRes">
 
-  <ng-container *ngFor="let g of genresId">{{g}} / </ng-container>
+
 
   <li *ngFor="let m of currentSearchRes.results">
+
+    <mat-card>
+      <mat-card-content>
+        <!--<img src="{{getPath(m.poster_path)}}" />-->
+        <div class="title">{{m.title}}</div>
+        <button mat-stroked-button [routerLink]="['/movie/'+m.id]">GO</button>
+      </mat-card-content>
+    </mat-card>
+  </li>
+
+ <!-- <li *ngFor="let m of currentSearchRes.results">
     <a routerLink="/movie/{{m.id}}">
       <mat-card>
         <mat-card-header>
@@ -11,7 +22,7 @@
       </mat-card>
     </a>
   </li>
-
+-->
   <li *ngFor="let p of currentPeopleSearchRes.results">
     <a routerLink="/actor/{{p.id}}">
       <mat-card>
