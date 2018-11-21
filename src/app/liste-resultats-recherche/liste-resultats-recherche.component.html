@@ -4,25 +4,21 @@
 
   <li *ngFor="let m of currentSearchRes.results">
 
-    <mat-card>
-      <mat-card-content>
-        <!--<img src="{{getPath(m.poster_path)}}" />-->
-        <div class="title">{{m.title}}</div>
-        <button mat-stroked-button [routerLink]="['/movie/'+m.id]">GO</button>
-      </mat-card-content>
-    </mat-card>
+
+      <mat-card>
+        <mat-card-content>
+          <a [routerLink]="['/movie/'+m.id]" >
+            <img src="{{tmdb.getTinyPoster(m.poster_path)}}" />
+            <div class="title">{{m.title}}</div>
+          </a>
+
+          <app-add-film></app-add-film>
+        </mat-card-content>
+      </mat-card>
+
   </li>
 
- <!-- <li *ngFor="let m of currentSearchRes.results">
-    <a routerLink="/movie/{{m.id}}">
-      <mat-card>
-        <mat-card-header>
-          {{m.title}}
-        </mat-card-header>
-      </mat-card>
-    </a>
-  </li>
--->
+
   <li *ngFor="let p of currentPeopleSearchRes.results">
     <a routerLink="/actor/{{p.id}}">
       <mat-card>
