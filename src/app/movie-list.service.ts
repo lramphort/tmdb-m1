@@ -46,7 +46,7 @@ export class MovieListService {
     return this.db.object(`users/${this.uid}/lists/${key}`);
   }
 
-  createList(list: ListStructure): void {
+  createList(list: ListStructure) {
     this.listsRef.push(list);
   }
 

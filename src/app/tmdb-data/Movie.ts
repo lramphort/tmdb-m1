@@ -2,6 +2,10 @@ export interface MovieQuery {
   language?: string; // default "en-US"
 }
 
+export interface MovieGenreQuery {
+  language?: string; // default "en-US"
+}
+
 export interface MovieGenre {
   id?: number;
   name?: string;

@@ -47,3 +47,8 @@ mat-card-content a .title {
 .button_add_list {
   width:40px;
 }
+
+.genres {
+  margin-left:1cm;
+  color:white;
+}

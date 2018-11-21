@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MovieCreditsResponse, MovieGenre, MovieGenresResponse, MovieQuery, MovieResponse} from './tmdb-data/Movie';
+import {MovieCreditsResponse, MovieGenre, MovieGenreQuery, MovieGenresResponse, MovieQuery, MovieResponse} from './tmdb-data/Movie';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {PersonCreditResponse, PersonImageResponse, PersonQuery, PersonResponse} from './tmdb-data/Person';
 import {SearchMovieQuery, SearchMovieResponse} from './tmdb-data/searchMovie';
@@ -39,9 +39,9 @@ export class TmdbService {
   init(key: string): this {
     this.api_key = key;
 
-    /*this.getMovieGenres().then(res => {
+    this.getMovieGenres({language: "fr-FR"}).then(res => {
       this.genres = res.genres;
-    })*/
+    })
 
     return this;
   }
@@ -73,11 +73,22 @@ export class TmdbService {
     return res.body;
   }
 
-  async getMovieGenres(): Promise<MovieGenresResponse> {
-    const url = `${tmdbApi}/genres/movie/list`;
-    const res = await this.get<MovieGenresResponse>(url, {language: "fr-FR"});
+  async getMovieGenres(options?: MovieGenreQuery): Promise<MovieGenresResponse> {
+    const url = `${tmdbApi}/genre/movie/list`;
+    const res = await this.get<MovieGenresResponse>(url, options);
     return res.body;
   }
+
+  getMovieGenreName(idGenre: number): string {
+    const genre: MovieGenre = this.genres.find((g) => {
+      return g.id === idGenre;
+    });
+
+    return genre.name;
+
+  }
+
+
 
   // _______________________________________________________________________________________________________________________________________
   // Person / People _______________________________________________________________________________________________________________________

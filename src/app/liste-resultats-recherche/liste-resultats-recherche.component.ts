@@ -25,6 +25,7 @@ export class ListeResultatsRechercheComponent implements OnInit {
         query: params['searchText']
       }).then(
         res => {
+
           this.genresId = [];
           this.currentSearchRes = res;
           this.currentSearchRes.results.forEach(result => {
@@ -47,6 +48,10 @@ export class ListeResultatsRechercheComponent implements OnInit {
 
     });
   }
+
+  get
+
+
 
 
 }
