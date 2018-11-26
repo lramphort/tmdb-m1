@@ -64,7 +64,6 @@ export class MovieListService {
   }
 
   addMovie(liste: ListStructure, idMovie: number) {
-    console.log(idMovie, "vient de passer dans la liste avec la clef", liste.key);
     if (!liste.movies) {
       liste.movies = [];
     }
@@ -77,6 +76,7 @@ export class MovieListService {
   }
 
   deleteMovie(liste: ListStructure, idMovie: number) {
+    console.log(idMovie, " supprimé de liste ", liste.key);
     if (!liste.movies) {
       return;
     }
@@ -84,6 +84,8 @@ export class MovieListService {
       return val !== idMovie;
     });
     this.updateMoviesForList(liste);
+    console.log(idMovie, " supprimé de liste ", liste.key);
+
   }
 
 
