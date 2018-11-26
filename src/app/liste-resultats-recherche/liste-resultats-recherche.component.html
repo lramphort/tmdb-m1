@@ -16,7 +16,7 @@
             <div class="genres"><span *ngFor="let g of m.genre_ids">{{tmdb.getMovieGenreName(g)}} </span></div>
           </a>
 
-          <app-add-film></app-add-film>
+          <app-add-film [movieId]="m.id"></app-add-film>
         </mat-card-content>
       </mat-card>
 
