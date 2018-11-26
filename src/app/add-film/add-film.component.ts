@@ -44,7 +44,7 @@ export class AddFilmComponent implements OnInit {
   }
 
   addToOrRemoveFromList(list: ListStructure) {
-    if (this.isInTheList(list)){
+    if (this.isInTheList(list)) {
       this.movieList.deleteMovie(list, this.movieId);
     } else {
       this.movieList.addMovie(list, this.movieId);
@@ -59,7 +59,7 @@ export class AddFilmComponent implements OnInit {
     return false;
   }
 
-  AddToANewList(name: string) {
+  AddToANewList() {
     const l: ListStructure = new ListStructure();
     l.name = this.newList;
     l.movies = [this.movieId];
