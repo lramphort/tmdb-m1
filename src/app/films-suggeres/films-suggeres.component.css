@@ -21,9 +21,28 @@ mat-card-content {
 
 ul {
   list-style: none;
-  padding:0px;
 }
 
 li {
   margin-bottom:0.2cm;
+}
+
+a {
+  text-decoration: none;
+}
+
+mat-card-content a {
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+mat-card-content a .title {
+
+  margin-left:1cm;
+  color:white;
+  font-size: 130%;
+  width: 100%;
+
 }

@@ -15,10 +15,12 @@
 
     <mat-card>
       <mat-card-content>
-        <img src="{{getPath(m.poster_path)}}" />
-        <div class="title">{{m.title}}</div>
-        <div class="genres"><ng-container *ngFor="let g of m.genres">{{g.name}} </ng-container></div>
-        <button mat-stroked-button [routerLink]="['/movie/'+m.id]">Go</button>
+        <a [routerLink]="['/movie/'+m.id]" >
+          <img src="{{getPath(m.poster_path)}}" />
+          <div class="title">{{m.title}}</div>
+          <div class="genres"><ng-container *ngFor="let g of m.genres">{{g.name}} </ng-container></div>
+        </a>
+        <app-add-film  [movieId]="m.id"></app-add-film>
       </mat-card-content>
     </mat-card>
   </li>
