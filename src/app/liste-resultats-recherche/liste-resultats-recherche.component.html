@@ -1,11 +1,14 @@
-<ng-container *ngFor="let g of genresId">{{tmdb.getMovieGenreName(g)}} / </ng-container>
+
+<ul class="filters">
+  <li *ngFor="let g of genresId"><mat-checkbox [(ngModel)]="g.selected">{{tmdb.getMovieGenreName(g.genreId)}}</mat-checkbox></li>
+</ul>
 
 
 <ul *ngIf="currentSearchRes">
 
 
 
-  <li *ngFor="let m of currentSearchRes.results">
+  <li *ngFor="let m of filterResults(currentSearchRes)">
 
 
       <mat-card>

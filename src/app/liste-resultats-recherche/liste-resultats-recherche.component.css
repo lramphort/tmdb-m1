@@ -61,3 +61,15 @@ mat-card-content a .title {
 }
 
 
+.filters {
+  width: 30cm;
+  margin:auto;
+  margin-bottom:0.2cm;
+
+  list-style: none;
+
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
