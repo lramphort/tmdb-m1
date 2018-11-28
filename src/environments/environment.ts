@@ -4,14 +4,20 @@
 
 export const environment = {
   production: false,
-  firebase:  {
-    apiKey: 'AIzaSyBvZktf19q1-PXrOdNIhPREAjTQKPohUFE',
-    authDomain: 'tmdb-d06c8.firebaseapp.com',
-    databaseURL: 'https://tmdb-d06c8.firebaseio.com',
-    projectId: 'tmdb-d06c8',
-    storageBucket: 'tmdb-d06c8.appspot.com',
-    messagingSenderId: '229910296713'
+  firebase: {
+    // apiKey: 'AIzaSyBvZktf19q1-PXrOdNIhPREAjTQKPohUFE',
+    // authDomain: 'tmdb-d06c8.firebaseapp.com',
+    // databaseURL: 'https://tmdb-d06c8.firebaseio.com',
+    // projectId: 'tmdb-d06c8',
+    // storageBucket: 'tmdb-d06c8.appspot.com',
+    // messagingSenderId: '229910296713'
 
+    apiKey: "AIzaSyAdbTUCPAkbDOO_3lS0CkgzodYKzTPNrto",
+    authDomain: "tmdb-m1-6b5de.firebaseapp.com",
+    databaseURL: "https://tmdb-m1-6b5de.firebaseio.com",
+    projectId: "tmdb-m1-6b5de",
+    storageBucket: "tmdb-m1-6b5de.appspot.com",
+    messagingSenderId: "1049032113864"
   }
 };
 
