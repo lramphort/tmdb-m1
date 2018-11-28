@@ -9,18 +9,9 @@ import {MovieResponse} from "../tmdb-data/Movie";
   styleUrls: ['./element-film.component.css']
 })
 export class ElementFilmComponent implements OnInit {
-  @Input() movieId: number;
-
-  movie: MovieResponse;
+  @Input() movies: MovieResponse[];
 
   constructor(private route: ActivatedRoute, private tmdb: TmdbService) {
-    this.tmdb.getMovie(this.movieId, {
-      language: "fr-FR"
-    }).then(res => {
-      this.movie = res;
-      console.log("movie.id = ",this.movie.id);
-      console.log("movieId = ",this.movieId);
-    });
   }
 
   ngOnInit() {

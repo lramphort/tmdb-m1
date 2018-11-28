@@ -1,3 +1,5 @@
+<li *ngFor="let movie of movies">
+
 <mat-card *ngIf="movie">
   <mat-card-content>
     <a [routerLink]="['/movie/'+movie.id]" >
@@ -8,3 +10,5 @@
     <app-add-film  [movieId]="movie.id"></app-add-film>
   </mat-card-content>
 </mat-card>
+
+</li>

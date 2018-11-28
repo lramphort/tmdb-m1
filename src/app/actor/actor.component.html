@@ -11,8 +11,5 @@
 
 <h2>Filmographie</h2>
 <ul *ngIf="movies">
-  <li *ngFor="let m of movies">
-    <app-element-film [movieId]="m.id"></app-element-film>
-  </li>
-
+  <app-element-film [movies]="movies"></app-element-film>
 </ul>
