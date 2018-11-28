@@ -20,7 +20,6 @@ a {
   text-decoration: none;
 }
 
-
 mat-card-content {
   display: flex;
   flex-direction: row;
@@ -46,14 +45,12 @@ mat-card-content a .title {
 }
 
 .genres {
-
   text-align: right;
   color:white;
   display:flex;
   flex-direction: column;
   margin-right:30px;
   min-width: 120px;
-
 }
 
 .button_add_list {
