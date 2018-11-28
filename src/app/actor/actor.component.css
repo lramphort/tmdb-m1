@@ -62,7 +62,12 @@ mat-card-content a .title {
 }
 
 .genres {
-  width: 20%;
+  text-align: right;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  margin-right:30px;
+  min-width: 120px;
 }
 
 h2 {
@@ -73,4 +78,3 @@ h2 {
 ul {
   list-style: none;
 }
-

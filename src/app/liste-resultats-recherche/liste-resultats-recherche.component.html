@@ -16,9 +16,8 @@
           <a [routerLink]="['/movie/'+m.id]" >
             <img src="{{tmdb.getTinyPoster(m.poster_path)}}" />
             <div class="title">{{m.title}}</div>
-            <div class="genres"><span *ngFor="let g of m.genre_ids">{{tmdb.getMovieGenreName(g)}} </span></div>
           </a>
-
+          <div class="genres"><span *ngFor="let g of m.genre_ids">{{tmdb.getMovieGenreName(g)}} </span></div>
           <app-add-film [movieId]="m.id"></app-add-film>
         </mat-card-content>
       </mat-card>

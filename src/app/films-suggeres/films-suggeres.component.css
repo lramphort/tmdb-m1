@@ -16,7 +16,12 @@ mat-card-content {
 }
 
 .genres {
-  width: 20%;
+  text-align: right;
+  color:white;
+  display:flex;
+  flex-direction: column;
+  margin-right:30px;
+  min-width: 120px;
 }
 
 ul {
