@@ -27,8 +27,8 @@
     </ul>
   </section>
 
-  <section class="films" *ngIf="listeFilmsTMDB">
-    <app-liste-film [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+  <section class="films" cdkDropList (cdkDropListDropped)="drop($event)" *ngIf="listeFilmsTMDB">
+    <app-liste-film [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB" cdkDrag>{{m}}></app-liste-film>
   </section>
 
 

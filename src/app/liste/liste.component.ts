@@ -10,6 +10,7 @@ import {DialogDeleteListComponent} from '../lists-manager-element/lists-manager-
 import {MatDialog} from '@angular/material';
 import {MovieResponse} from '../tmdb-data/Movie';
 import {TmdbService} from '../tmdb.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -94,4 +95,9 @@ export class ListeComponent implements OnInit {
     this.editMode = false;
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.currentList.movies, event.previousIndex, event.currentIndex);
+  }
 }
+
+//TODO drag and drop ici !!
