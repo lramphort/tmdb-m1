@@ -1,5 +1,8 @@
 <form (submit)="onSubmit()">
   <input type="text" [(ngModel)]="valeurRecherchee"  placeholder="Rechercher un film ou un acteur"
          name="first" id="searchBar">
+  <select id ="searchGenre">
+    <option selected value="">Genre</option>
+  </select>
   <button type="submit">Chercher</button>
 </form>

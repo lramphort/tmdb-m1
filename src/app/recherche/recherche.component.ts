@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RechercheComponent implements OnInit {
   valeurRecherchee: string;
+
   constructor(private tmdb: TmdbService, private route: ActivatedRoute, private router: Router) {
 
     this.route.queryParams.subscribe(params => {

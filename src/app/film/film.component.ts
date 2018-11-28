@@ -95,7 +95,11 @@ export class FilmComponent implements OnInit {
   }
 
   addToList(list: ListStructure) {
-    this.movieList.addMovie(list, this.movieId);
+    if (this.isInTheList(list)) {
+      this.movieList.deleteMovie(list, this.movieId);
+    } else {
+      this.movieList.addMovie(list, this.movieId);
+    }
   }
 }
 
