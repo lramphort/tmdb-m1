@@ -13,7 +13,6 @@ export class ActorComponent implements OnInit {
 
   actor: PersonResponse;
   image: string;
-  //credits: PersonCreditResponse;
   movies: MovieResponse[];
 
  constructor(private route: ActivatedRoute, private tmdb: TmdbService) {
@@ -22,10 +21,8 @@ export class ActorComponent implements OnInit {
       this.actor = res;
       console.log(this.actor.gender);
       this.image = null;
-      //this.credits = null;
       this.movies = [];
       this.tmdb.getPersonCredit(actorId, {language: "fr-FR"}).then(val => {
-        //this.credits = val;
         val.cast.forEach(cast => {
           this.tmdb.getMovie(cast.id, {language: "fr-FR"}).then(m => {
             this.movies.push(m);
@@ -57,14 +54,6 @@ export class ActorComponent implements OnInit {
 
     return "/assets/mockup_neutral_profile.jpg";
 
-  }
-
-  getPath(s: string): string {
-    if (s) {
-      return "https://image.tmdb.org/t/p/w92/" + s;
-    } else {
-      return "/assets/mockup_poster_tiny.jpg";
-    }
   }
 
 }
