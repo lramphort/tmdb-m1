@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TmdbService} from "../tmdb.service";
-import {MovieListService} from "../movie-list.service";
+import {MovieResponse} from "../tmdb-data/Movie";
 
 @Component({
   selector: 'app-element-film',
@@ -9,10 +9,20 @@ import {MovieListService} from "../movie-list.service";
   styleUrls: ['./element-film.component.css']
 })
 export class ElementFilmComponent implements OnInit {
+  @Input() movies: MovieResponse[];
 
-  constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  getPath(s: string): string {
+    if (s) {
+      return "https://image.tmdb.org/t/p/w92/" + s;
+    } else {
+      return "/assets/mockup_poster_tiny.jpg";
+    }
   }
 
 }
