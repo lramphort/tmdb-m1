@@ -40,6 +40,7 @@ import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/lis
 import { LogoutComponent } from './logout/logout.component';
 import { AddFilmComponent } from './add-film/add-film.component';
 import { ElementFilmComponent } from './element-film/element-film.component';
+import { ListeFilmsGenreComponent } from './liste-films-genre/liste-films-genre.component';
 
 
 
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
   {path: 'creation-compte', component: CreationCompteComponent},
   {path: 'movie/:id', component: FilmComponent},
   {path: 'list', component: ListeComponent},
-  {path: 'actor/:id', component: ActorComponent}
+  {path: 'actor/:id', component: ActorComponent},
+  {path: 'genre/:id', component: ListeFilmsGenreComponent}
 ];
 
 @NgModule({
@@ -75,7 +77,8 @@ const appRoutes: Routes = [
     DialogDeleteMovieComponent,
     LogoutComponent,
     AddFilmComponent,
-    ElementFilmComponent
+    ElementFilmComponent,
+    ListeFilmsGenreComponent
   ],
   imports: [
     BrowserModule,
