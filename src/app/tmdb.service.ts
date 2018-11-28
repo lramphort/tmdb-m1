@@ -54,6 +54,7 @@ export class TmdbService {
     const res = await this.get<MovieResponse>(url, options);
     return res.body;
   }
+    // https://api.themoviedb.org/3/genre/movie/list?api_key=25ea93320b0ede2eb2ce7b2661886a0e&language=fr-FR
 
   async getLatestMovie(options?: MovieQuery): Promise<MovieResponse> {
     const url = `${tmdbApi}/movie/latest`;
@@ -74,8 +75,9 @@ export class TmdbService {
   }
 
   async getMovieGenres(): Promise<MovieGenresResponse> {
-    const url = `${tmdbApi}/genres/movie/list`;
+    const url = `${tmdbApi}/genre/movie/list`;
     const res = await this.get<MovieGenresResponse>(url, {language: "fr-FR"});
+    console.log(res.body);
     return res.body;
   }
 

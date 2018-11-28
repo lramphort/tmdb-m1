@@ -2,7 +2,8 @@
   <input type="text" [(ngModel)]="valeurRecherchee"  placeholder="Rechercher un film ou un acteur"
          name="first" id="searchBar">
   <select id ="searchGenre">
-    <option selected value="">Genre</option>
+    <option selected value="">Tous genres</option>
+    <option *ngFor="let genreDisplayed of genreList" value="{{genreDisplayed}}">{{genreDisplayed}}</option>
   </select>
   <button type="submit">Chercher</button>
 </form>
