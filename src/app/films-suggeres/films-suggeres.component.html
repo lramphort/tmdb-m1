@@ -2,18 +2,6 @@
 <h3>Vous aimerez sûrement :</h3>
 
 <ul *ngIf="movieList">
-  <li *ngFor="let m of movieList">
-
-      <mat-card>
-        <mat-card-content>
-          <a [routerLink]="['/movie/'+m.id]" >
-            <img src="{{getPath(m.poster_path)}}" />
-            <div class="title">{{m.title}}</div>
-          </a>
-          <div class="genres"><ng-container *ngFor="let g of m.genres">{{g.name}}</ng-container></div>
-          <app-add-film  [movieId]="m.id"></app-add-film>
-        </mat-card-content>
-      </mat-card>
-  </li>
+  <app-element-film [movies]="movieList"></app-element-film>
 </ul>
 

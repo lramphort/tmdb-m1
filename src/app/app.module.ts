@@ -40,6 +40,7 @@ import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/lis
 import { LogoutComponent } from './logout/logout.component';
 import { AddFilmComponent } from './add-film/add-film.component';
 import { ElementFilmComponent } from './element-film/element-film.component';
+import { ElementActeurComponent } from './element-acteur/element-acteur.component';
 import { ListeFilmsGenreComponent } from './liste-films-genre/liste-films-genre.component';
 
 
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
     LogoutComponent,
     AddFilmComponent,
     ElementFilmComponent,
+    ElementActeurComponent,
     ListeFilmsGenreComponent
   ],
   imports: [

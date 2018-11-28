@@ -5,8 +5,11 @@
   <li *ngFor="let p of personList.results">
     <mat-card>
       <mat-card-content>
-        <div class="nom">{{p.name}}</div>
-        <button mat-stroked-button [routerLink]="['/actor/'+p.id]">Go</button>
+        <a [routerLink]="['/actor/'+p.id]" >
+        <!-- TODO: tiny poster d'un acteur
+        <img src="{{getTinyPoster(p.profile_path)}}" /> -->
+          <div class="nom">{{p.name}}</div>
+        </a>
       </mat-card-content>
     </mat-card>
   </li>
