@@ -14,20 +14,18 @@
             </button>
 
             <mat-menu #menu="matMenu">
-              <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
+                <form (click)="stopPropagation($event)" (submit)="createList()">
+                    <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Titre 1">
+                <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
                 <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
                 <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
                 <span>{{list.name}}</span>
               </button>
+            </form>
             </mat-menu>
 
           </div>
 
-          <div class="delete">
-            <button mat-icon-button>
-              <mat-icon aria-label="delete icon">delete</mat-icon>
-            </button>
-          </div>
 
       </div>
       <div>

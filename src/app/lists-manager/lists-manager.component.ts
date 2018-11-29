@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit,ElementRef,ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
@@ -17,7 +17,6 @@ export class ListsManagerComponent implements OnInit {
   addingList: boolean;
   newListe: string;
   userLists: any;
-
 
   constructor(private router: Router, public listService: MovieListService) {
     this.listService.getUser().subscribe( u => {
@@ -45,7 +44,9 @@ export class ListsManagerComponent implements OnInit {
     this.listService.createList(l);
     this.addingList = false;
     this.newListe = "";
+   
   }
+
 
 }
 
