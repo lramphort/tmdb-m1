@@ -9,10 +9,17 @@
       <button (click)="delete()" mat-icon-button>
         <mat-icon>delete</mat-icon>
       </button>
+      <button (click)="displaySharingInput(sharingInput)" mat-icon-button>
+        <mat-icon>share</mat-icon>
+      </button>
+      <div *ngIf="isSharingInputDisplayed">
+        <input type="email" name="sharingInput" placeholder="Saisissez une adresse email" matInput #sharingInput>
+        <button (click)="share()" mat-icon-button>Partager</button>
+      </div>
     </span>
 
     <form (submit)="changeName()" *ngIf="editMode">
-      <mat-form-field >
+      <mat-form-field>
         <input [(ngModel)]="currentList.name" name="newName" matInput>
       </mat-form-field>
     </form>
