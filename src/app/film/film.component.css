@@ -77,3 +77,7 @@ mat-menu button {
   font-size:2em;
   text-align: center;
 }
+
+input{
+  margin-left : 1rem;
+}

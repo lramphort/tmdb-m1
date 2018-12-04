@@ -9,13 +9,12 @@
 
           <div class="addLists" *ngIf="isUserLogged">
             <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon *ngIf="isInAList" aria-label="list icon">event_note</mat-icon>
-              <mat-icon *ngIf="!isInAList" aria-label="list icon">add</mat-icon>
+              <mat-icon aria-label="list icon">add</mat-icon>
             </button>
 
             <mat-menu #menu="matMenu">
                 <form (click)="stopPropagation($event)" (submit)="createList()">
-                    <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Titre 1">
+                    <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ...">
                 <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
                 <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
                 <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
@@ -23,10 +22,7 @@
               </button>
             </form>
             </mat-menu>
-
           </div>
-
-
       </div>
       <div>
           <!--<div class="rating">

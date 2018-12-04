@@ -3,7 +3,7 @@
 
   <li *ngIf="addingList">
     <form (submit)="createList()">
-        <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Titre 1" (blur)="addingList = false">
+        <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ..." (blur)="addingList = false">
     </form>
   </li>
 

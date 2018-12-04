@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
 import {map} from 'rxjs/operators';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 
@@ -41,10 +42,10 @@ export class ListsManagerComponent implements OnInit {
   createList() {
     const l: ListStructure = new ListStructure();
     l.name = this.newListe;
+    l.maj = new Date();
     this.listService.createList(l);
     this.addingList = false;
     this.newListe = "";
-   
   }
 
 
