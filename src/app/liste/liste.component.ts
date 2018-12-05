@@ -99,14 +99,17 @@ export class ListeComponent implements OnInit {
   }
 
   displaySharingInput() {
-    this.elementRef.nativeElement.focus();
     this.isSharingInputDisplayed = !this.isSharingInputDisplayed;
   }
 
   share() {
     this.isSharingInputDisplayed = !this.isSharingInputDisplayed;
-    console.log("Liste partagee ! Consultez l'URL suivante : BLABLABLA");
-    alert("Liste partagee ! Consultez l'URL suivante : BLABLABLA, retrouvez ce message dans la console.");
+    // tslint:disable-next-line:max-line-length
+    if (confirm("Liste partagee ! Consultez l'URL suivante : src/assets/fake_screen_share_list.png " +
+      ", retrouvez ce message dans la console." + " Confirmez pour etre redirige vers l'ecran.")) {
+      window.open('src/assets/fake_screen_share_list.png', 'fake screen');
+    }
+    console.log("Liste partagee ! Consultez l'URL suivante : src/assets/fake_screen_share_list.png");
   }
 
 }

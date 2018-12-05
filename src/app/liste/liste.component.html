@@ -14,7 +14,9 @@
       </button>
       <div *ngIf="isSharingInputDisplayed">
         <input type="email" name="sharingInput" placeholder="Saisissez une adresse email" matInput #sharingInput>
-        <button (click)="share()" mat-icon-button>Partager</button>
+        <button (click)="share()" mat-icon-button>
+          <mat-icon>send</mat-icon>
+        </button>
       </div>
     </span>
 
