@@ -11,6 +11,7 @@ import {MovieGenre, MovieGenresResponse} from "../tmdb-data/Movie";
 })
 export class RechercheComponent implements OnInit {
   valeurRecherchee: string;
+  selectedCateg: string;
   genreList: MovieGenresResponse;
 
   constructor(private tmdb: TmdbService, private route: ActivatedRoute, private router: Router) {
@@ -23,18 +24,27 @@ export class RechercheComponent implements OnInit {
 
   }
 
+  get gGenreList() {
+    return this.genreList;
+  }
+
   async setGenreList(){
     const genres = await this.tmdb.getMovieGenres();
+    console.log(genres);
     this.genreList = genres;
   }
 
   ngOnInit() {
+    this.selectedCateg = 'Tous genres';
 
   }
 
   onSubmit() {
-
-    this.router.navigate(['search'], {queryParams: {searchText: this.valeurRecherchee}});
+    if (this.selectedCateg === 'Tous genres') {
+      this.router.navigate(['search'], {queryParams: {searchText: this.valeurRecherchee}});
+    } else {
+      this.router.navigate(['search'], {queryParams: {searchText: this.valeurRecherchee, category: this.selectedCateg}});
+    }
 
   }
 }

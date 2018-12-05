@@ -23,7 +23,7 @@ export class ListeResultatsRechercheComponent implements OnInit {
       this.tmdb.searchMovie({
         language: "fr-FR",
         query: params['searchText']
-      }).then(
+      }, params['category']).then(
         res => {
           this.genresId = [];
           this.currentSearchRes = res;

@@ -29,7 +29,7 @@ import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connex
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
 import { ListeComponent } from './liste/liste.component';
 import { ActorComponent } from './actor/actor.component';
-import {AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.component';
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 

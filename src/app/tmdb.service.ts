@@ -38,11 +38,6 @@ export class TmdbService {
 
   init(key: string): this {
     this.api_key = key;
-
-    /*this.getMovieGenres().then(res => {
-      this.genres = res.genres;
-    })*/
-
     return this;
   }
 
@@ -62,10 +57,19 @@ export class TmdbService {
     return res.body;
   }
 
-  async searchMovie(query: SearchMovieQuery): Promise<SearchMovieResponse> {
+  async searchMovie(query: SearchMovieQuery, category?: string): Promise<SearchMovieResponse> {
+    console.log(query, "  --------     " + category)
     const url = `${tmdbApi}/search/movie`;
     const res = await this.get<SearchMovieResponse>(url, query);
+
+    if (category) {
+      const url2 = `${tmdbApi}/discover/movie`;
+      const res2 = await this.get<SearchMovieResponse>(url2, "with_genres=" + category);
+
+      console.log('RES 2', res2.body);
+    }
     return res.body;
+    //    return res.body.results.filter(res => res.genre_ids.);  
   }
 
   async getMovieCredit(id: number): Promise<MovieCreditsResponse> {
@@ -77,7 +81,6 @@ export class TmdbService {
   async getMovieGenres(): Promise<MovieGenresResponse> {
     const url = `${tmdbApi}/genre/movie/list`;
     const res = await this.get<MovieGenresResponse>(url, {language: "fr-FR"});
-    console.log(res.body);
     return res.body;
   }
 
