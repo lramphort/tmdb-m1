@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
-import {ListStructure} from './dataTypes/ListStructure';
-import {Observable} from 'rxjs';
-import {User} from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { ListStructure } from './dataTypes/ListStructure';
+import { Observable } from 'rxjs';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class MovieListService {
   private listsRef: AngularFireList<ListStructure> = null;
 
   constructor(public anAuth: AngularFireAuth,
-              private db: AngularFireDatabase) {
+    private db: AngularFireDatabase) {
     this.user = this.anAuth.user;
 
-    this.user.subscribe( u => {
+    this.user.subscribe(u => {
       console.log("USER : ");
       console.log(u);
 
@@ -31,7 +31,7 @@ export class MovieListService {
         this.uid = null;
       }
 
-    }) ;
+    });
   }
 
   getUser(): Observable<User> {
@@ -59,7 +59,7 @@ export class MovieListService {
   }
 
   updateMoviesForList(liste: ListStructure) {
-    const value: any = {movies: liste.movies};
+    const value: any = { movies: liste.movies };
     this.listsRef.update(liste.key, value).catch(err => this.displayError(err));
   }
 
