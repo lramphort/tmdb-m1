@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {MovieListService} from '../movie-list.service';
-import {ListStructure} from '../dataTypes/ListStructure';
-import {AngularFireAuth} from '@angular/fire/auth';
-import {AngularFireDatabase} from '@angular/fire/database';
-import {map} from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MovieListService } from '../movie-list.service';
+import { ListStructure } from '../dataTypes/ListStructure';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
-import {DialogDeleteListComponent} from '../lists-manager-element/lists-manager-element.component';
-import {MatDialog} from '@angular/material';
-import {MovieResponse} from '../tmdb-data/Movie';
-import {TmdbService} from '../tmdb.service';
+import { DialogDeleteListComponent } from '../lists-manager-element/lists-manager-element.component';
+import { MatDialog } from '@angular/material';
+import { MovieResponse } from '../tmdb-data/Movie';
+import { TmdbService } from '../tmdb.service';
 
 
 @Component({
@@ -18,29 +18,33 @@ import {TmdbService} from '../tmdb.service';
   styleUrls: ['./liste.component.css']
 })
 export class ListeComponent implements OnInit {
+  @ViewChild('sharingInput') elementRef: ElementRef;
 
   currentList: ListStructure;
   editMode: boolean;
   newName: string;
   moyenne: number;
+  isSharingInputDisplayed: boolean;
 
   listeFilmsTMDB: MovieResponse[];
 
   constructor(private route: ActivatedRoute,
-              private mls: MovieListService,
-              public anAuth: AngularFireAuth,
-              private db: AngularFireDatabase,
-              public dialog: MatDialog,
-              private tmdb: TmdbService) { }
+    private mls: MovieListService,
+    public anAuth: AngularFireAuth,
+    private db: AngularFireDatabase,
+    public dialog: MatDialog,
+    private tmdb: TmdbService) { }
 
   ngOnInit() {
+    this.isSharingInputDisplayed = false;
+
     this.route.queryParams.subscribe(params => {
 
       this.mls.getUser().subscribe(u => {
         if (u) {
           this.mls.getList(params['key']).snapshotChanges().pipe(
-            map( changes => {
-              return ({key: params['key'], ...changes.payload.val()});
+            map(changes => {
+              return ({ key: params['key'], ...changes.payload.val() });
             })
           ).subscribe(l => {
             this.currentList = l;
@@ -48,16 +52,16 @@ export class ListeComponent implements OnInit {
             this.listeFilmsTMDB = [];
             if (l.movies) {
               l.movies.forEach(movie => {
-                  this.tmdb.getMovie(movie, {language: "FR-fr"}).then(m => {
-                    this.listeFilmsTMDB.push(m);
+                this.tmdb.getMovie(movie, { language: "FR-fr" }).then(m => {
+                  this.listeFilmsTMDB.push(m);
 
-                    const sommePopularity = this.listeFilmsTMDB.reduce( (acc, obj) => {
-                      return acc + obj.vote_average;
-                    }, 0);
+                  const sommePopularity = this.listeFilmsTMDB.reduce((acc, obj) => {
+                    return acc + obj.vote_average;
+                  }, 0);
 
-                    this.moyenne = sommePopularity / this.listeFilmsTMDB.length;
-                  });
-                }
+                  this.moyenne = sommePopularity / this.listeFilmsTMDB.length;
+                });
+              }
               );
             }
           });
@@ -72,7 +76,7 @@ export class ListeComponent implements OnInit {
   delete() {
     this.dialog.open(DialogDeleteListComponent, {
       width: '300px',
-      data: {key: this.currentList.key}
+      data: { key: this.currentList.key }
     });
   }
 
@@ -90,8 +94,22 @@ export class ListeComponent implements OnInit {
   }
 
   changeName() {
-    this.mls.updateList(this.currentList.key, {name: this.currentList.name});
+    this.mls.updateList(this.currentList.key, { name: this.currentList.name });
     this.editMode = false;
+  }
+
+  displaySharingInput() {
+    this.isSharingInputDisplayed = !this.isSharingInputDisplayed;
+  }
+
+  share() {
+    this.isSharingInputDisplayed = !this.isSharingInputDisplayed;
+    // tslint:disable-next-line:max-line-length
+    if (confirm("Liste partagee ! Consultez l'URL suivante : src/assets/fake_screen_share_list.png " +
+      ", retrouvez ce message dans la console." + " Confirmez pour etre redirige vers l'ecran.")) {
+      window.open('src/assets/fake_screen_share_list.png', 'fake screen');
+    }
+    console.log("Liste partagee ! Consultez l'URL suivante : src/assets/fake_screen_share_list.png");
   }
 
 }

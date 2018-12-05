@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" ([opened])="sideNavVisible" >
+  <mat-sidenav #sidenav mode="side" ([opened])="sideNavVisible">
     <app-lists-manager></app-lists-manager>
   </mat-sidenav>
 
@@ -9,7 +9,9 @@
         <mat-icon>list</mat-icon>
       </button>
       <app-recherche></app-recherche>
-      <button mat-fab style="visibility: hidden"><mat-icon>settings</mat-icon></button>
+      <button mat-fab style="visibility: hidden">
+        <mat-icon>settings</mat-icon>
+      </button>
     </header>
     <div class="login">
       <div class="connexion" *ngIf="!user">
