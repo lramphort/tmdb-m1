@@ -1,6 +1,6 @@
 <div class="Global" *ngIf="movieId">
 
-  <div class="gauche">
+  <div class="gauche"  *ngIf="title" >
       <div class="poster">
         <img [src]="getPath()" />
       </div>
@@ -9,26 +9,21 @@
 
           <div class="addLists" *ngIf="isUserLogged">
             <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon *ngIf="isInAList" aria-label="list icon">event_note</mat-icon>
-              <mat-icon *ngIf="!isInAList" aria-label="list icon">add</mat-icon>
+              <mat-icon aria-label="list icon">add</mat-icon>
             </button>
 
             <mat-menu #menu="matMenu">
-              <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
+                <form (click)="stopPropagation($event)" (submit)="createList()">
+                    <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ...">
+                 
+                <button (click)="addToList(list)" mat-menu-item  *ngFor="let list of lists | orderByLastDate">
                 <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
                 <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
                 <span>{{list.name}}</span>
               </button>
+            </form>
             </mat-menu>
-
           </div>
-
-          <div class="delete">
-            <button mat-icon-button>
-              <mat-icon aria-label="delete icon">delete</mat-icon>
-            </button>
-          </div>
-
       </div>
       <div>
           <!--<div class="rating">
@@ -52,7 +47,7 @@
 
 
 
-  <div class="droite">
+  <div class="droite"  *ngIf="title">
       <h1>{{title}}</h1>
       <ul>
         <li> Année :                    {{annee.slice(0,4)}} </li>

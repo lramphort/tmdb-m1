@@ -3,3 +3,9 @@ form input {
   background-color: white;
   color:black;
 }
+
+a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+

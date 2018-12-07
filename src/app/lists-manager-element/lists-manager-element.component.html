@@ -11,7 +11,7 @@
 
   <form (submit)="changeName()" *ngIf="editMode">
     <mat-form-field>
-      <input [(ngModel)]="list.name" name="newName" matInput>
+      <input [(ngModel)]="list.name" name="newName"  (blur)="editMode = false" matInput>
     </mat-form-field>
   </form>
 

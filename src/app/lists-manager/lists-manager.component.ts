@@ -1,8 +1,9 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit,ElementRef,ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MovieListService} from '../movie-list.service';
 import {ListStructure} from '../dataTypes/ListStructure';
 import {map} from 'rxjs/operators';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 
@@ -45,6 +46,7 @@ export class ListsManagerComponent implements OnInit {
     this.addingList = false;
     this.newListe = "";
   }
+
 
 }
 

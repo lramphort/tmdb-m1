@@ -47,6 +47,7 @@ export class MovieListService {
   }
 
   createList(list: ListStructure): void {
+    list.maj = new Date().toString();
     this.listsRef.push(list);
   }
 
@@ -60,10 +61,13 @@ export class MovieListService {
 
   updateMoviesForList(liste: ListStructure) {
     const value: any = { movies: liste.movies };
+
+    this.updateList(liste.key, {maj:new Date().toString()}); 
     this.listsRef.update(liste.key, value).catch(err => this.displayError(err));
   }
 
   addMovie(liste: ListStructure, idMovie: number) {
+    liste.maj = new Date().toJSON();
     console.log(idMovie, "vient de passer dans la liste avec la clef", liste.key);
     if (!liste.movies) {
       liste.movies = [];

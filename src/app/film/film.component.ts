@@ -31,6 +31,7 @@ export class FilmComponent implements OnInit {
   lists: ListStructure[];
   isInAList: boolean;
   isUserLogged: boolean;
+  newListe: string;
 
 
   constructor(private route: ActivatedRoute, private tmdb: TmdbService, private movieList: MovieListService) {
@@ -101,5 +102,18 @@ export class FilmComponent implements OnInit {
       this.movieList.addMovie(list, this.movieId);
     }
   }
+
+  stopPropagation(event){
+    event.stopPropagation();
+}
+
+createList() {
+  const l: ListStructure = new ListStructure();
+  l.name = this.newListe;
+  this.movieList.createList(l);
+  this.newListe = "";
+ 
+}
+
 }
 

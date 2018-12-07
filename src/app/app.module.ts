@@ -41,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
 import { LogoutComponent } from './logout/logout.component';
 import { FakeScreenComponent } from './fake-screen/fake-screen.component';
+import {OrderBy} from './pipes/orderBy.pipes';
 
 
 
@@ -76,7 +77,9 @@ const appRoutes: Routes = [
     ListeFilmComponent,
     DialogDeleteMovieComponent,
     LogoutComponent,
-    FakeScreenComponent
+    FakeScreenComponent,
+    OrderBy
+
   ],
   imports: [
     BrowserModule,

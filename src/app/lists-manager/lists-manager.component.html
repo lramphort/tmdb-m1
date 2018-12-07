@@ -1,11 +1,13 @@
 <h2><mat-icon>theaters</mat-icon> Listes de films <button (click)="addingList=true;" mat-icon-button><mat-icon>add</mat-icon></button></h2>
 <ol *ngIf="userLists">
 
-  <app-lists-manager-element [list]="l" *ngFor="let l of userLists"></app-lists-manager-element>
-
   <li *ngIf="addingList">
     <form (submit)="createList()">
-        <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Titre 1" #inputNewListe>
+        <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ..." (blur)="addingList = false">
     </form>
   </li>
+
+  <app-lists-manager-element [list]="l" *ngFor="let l of userLists | orderByLastDate"></app-lists-manager-element>
+
+ 
 </ol>
