@@ -42,7 +42,6 @@ export class ListsManagerComponent implements OnInit {
   createList() {
     const l: ListStructure = new ListStructure();
     l.name = this.newListe;
-    l.maj = new Date();
     this.listService.createList(l);
     this.addingList = false;
     this.newListe = "";

@@ -1,6 +1,6 @@
 <div class="Global" *ngIf="movieId">
 
-  <div class="gauche">
+  <div class="gauche"  *ngIf="title" >
       <div class="poster">
         <img [src]="getPath()" />
       </div>
@@ -15,7 +15,8 @@
             <mat-menu #menu="matMenu">
                 <form (click)="stopPropagation($event)" (submit)="createList()">
                     <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ...">
-                <button (click)="addToList(list)" mat-menu-item *ngFor="let list of this.lists">
+                 
+                <button (click)="addToList(list)" mat-menu-item  *ngFor="let list of lists | orderByLastDate">
                 <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
                 <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
                 <span>{{list.name}}</span>
@@ -46,7 +47,7 @@
 
 
 
-  <div class="droite">
+  <div class="droite"  *ngIf="title">
       <h1>{{title}}</h1>
       <ul>
         <li> Année :                    {{annee.slice(0,4)}} </li>
