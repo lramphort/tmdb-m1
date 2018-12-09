@@ -2,7 +2,13 @@
   color:white;
   padding:20px;
 }
-
+i.large{
+  color: white;
+  cursor: pointer;
+}
+.draggable{
+  cursor: move;
+}
 .details ul{
   list-style: none;
 }

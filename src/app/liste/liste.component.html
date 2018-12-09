@@ -1,6 +1,6 @@
+<i class="material-icons white large" [routerLink]="['']">arrow_back</i>
 <div id="liste" *ngIf="currentList">
   <h1>
-
     <span *ngIf="!editMode" >
       <mat-icon>theaters</mat-icon> Liste : {{currentList.name}}
       <button (click)="editMode=true;"  mat-icon-button>
@@ -29,7 +29,7 @@
 
   <section class="films" *ngIf="listeFilmsTMDB">
     <div mwlDroppable>
-      <app-liste-film mwlDraggable [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+      <app-liste-film class="draggable" mwlDraggable [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
     </div>
   </section>
 
