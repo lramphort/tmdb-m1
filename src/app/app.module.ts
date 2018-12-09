@@ -39,6 +39,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
 import { LogoutComponent } from './logout/logout.component';
 import {OrderBy} from './pipes/orderBy.pipes';
+import {DragAndDropModule} from "angular-draggable-droppable";
 
 
 
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     MatSidenavModule,
     MatFormFieldModule,
     MatMenuModule,
+    DragAndDropModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}

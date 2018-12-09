@@ -28,7 +28,9 @@
   </section>
 
   <section class="films" *ngIf="listeFilmsTMDB">
-    <app-liste-film [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+    <div mwlDroppable>
+      <app-liste-film mwlDraggable [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+    </div>
   </section>
 
 

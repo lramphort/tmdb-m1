@@ -10,6 +10,7 @@ import {DialogDeleteListComponent} from '../lists-manager-element/lists-manager-
 import {MatDialog} from '@angular/material';
 import {MovieResponse} from '../tmdb-data/Movie';
 import {TmdbService} from '../tmdb.service';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 
 
 @Component({
