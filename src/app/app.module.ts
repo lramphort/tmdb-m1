@@ -40,6 +40,7 @@ import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/lis
 import { LogoutComponent } from './logout/logout.component';
 import {OrderBy} from './pipes/orderBy.pipes';
 import {DragAndDropModule} from "angular-draggable-droppable";
+import {ClickOutsideModule} from "ng-click-outside";
 
 
 
@@ -96,6 +97,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatMenuModule,
     DragAndDropModule,
+    ClickOutsideModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false}

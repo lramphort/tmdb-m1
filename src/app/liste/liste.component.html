@@ -1,19 +1,19 @@
 <div id="liste" *ngIf="currentList">
   <h1>
 
-    <span *ngIf="!editMode">
+    <span *ngIf="!editMode" >
       <mat-icon>theaters</mat-icon> Liste : {{currentList.name}}
-      <button (click)="editMode=true;" mat-icon-button>
+      <button (click)="editMode=true;"  mat-icon-button>
         <mat-icon>create</mat-icon>
       </button>
-      <button (click)="delete()" mat-icon-button>
+      <button (click)="delete()"   mat-icon-button>
         <mat-icon>delete</mat-icon>
       </button>
     </span>
 
-    <form (submit)="changeName()" *ngIf="editMode">
-      <mat-form-field >
-        <input [(ngModel)]="currentList.name" name="newName" matInput>
+    <form (submit)="changeName()" *ngIf="editMode" >
+      <mat-form-field (clickOutside)="setEditModeFalse($event)">
+        <input [(ngModel)]="currentList.name"  name="newName" matInput>
       </mat-form-field>
     </form>
   </h1>

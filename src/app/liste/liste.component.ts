@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material';
 import {MovieResponse} from '../tmdb-data/Movie';
 import {TmdbService} from '../tmdb.service';
 import { DragAndDropModule } from 'angular-draggable-droppable';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 
 @Component({
@@ -95,4 +96,7 @@ export class ListeComponent implements OnInit {
     this.editMode = false;
   }
 
+  setEditModeFalse(event) {
+    console.log("clicking Outside and close editing mode");
+  }
 }
