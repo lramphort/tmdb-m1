@@ -67,6 +67,7 @@ export class TmdbService {
       const res2 = await this.get<SearchMovieResponse>(url2, "with_genres=" + category);
 
       console.log('RES 2', res2.body);
+      return res2.body;
     }
     return res.body;
     //    return res.body.results.filter(res => res.genre_ids.);  

@@ -1,7 +1,7 @@
 <form (submit)="onSubmit()">
   <input type="text" [(ngModel)]="valeurRecherchee"  placeholder="Rechercher un film ou un acteur"
-         name="first" id="searchBar">
-  <select *ngIf="genreList" [(ngModel)]="selectedCateg" id="searchGenre" name="first2">
+         name="first" id="searchBar" (keypress)="selectedCateg = 'Tous genres'">
+  <select *ngIf="genreList" [(ngModel)]="selectedCateg" id="searchGenre" name="first2" (click)="resetSearch()">
     <option selected value="Tous genres">Tous genres</option>
     <option *ngFor="let genreDisplayed of genreList.genres" value="{{genreDisplayed.id}}">{{genreDisplayed.name}}</option>
   </select>
