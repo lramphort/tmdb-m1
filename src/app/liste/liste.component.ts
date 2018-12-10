@@ -117,4 +117,12 @@ export class ListeComponent implements OnInit {
     }
     console.log("Liste partagee ! Consultez l'URL suivante : src/assets/fake_screen_share_list.png");
   }
+
+  whenDragged() {
+    console.log("Item dragged and dropped somewhere");
+  }
+
+  itemDropped() {
+    console.log("Item dropped in list");
+  }
 }

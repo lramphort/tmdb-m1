@@ -37,8 +37,8 @@
   </section>
 
   <section class="films" *ngIf="listeFilmsTMDB">
-    <div mwlDroppable>
-      <app-liste-film class="draggable" mwlDraggable [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
+    <div mwlDroppable >
+      <app-liste-film class="draggable" mwlDraggable (dragEnd)="whenDragged()" [liste]="currentList" [movie]="m" *ngFor="let m of listeFilmsTMDB"></app-liste-film>
     </div>
   </section>
 
