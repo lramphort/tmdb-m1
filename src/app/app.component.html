@@ -8,10 +8,10 @@
       <button mat-fab (click)="sidenav.toggle();" [style.visibility]="user ? 'inherit' : 'hidden'">
         <mat-icon>list</mat-icon>
       </button>
+      <app-recherche></app-recherche>
       <a class="mat-button" href="/" mat-fab>
         <mat-icon>home</mat-icon>
       </a>
-      <app-recherche></app-recherche>
       <button mat-fab style="visibility: hidden">
         <mat-icon>settings</mat-icon>
       </button>

@@ -47,4 +47,10 @@ export class RechercheComponent implements OnInit {
     }
 
   }
+
+  resetSearch(){
+    if ( this.selectedCateg != 'Tous genres' ) { 
+      this.valeurRecherchee = '';
+    }
+  }
 }
