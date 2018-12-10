@@ -4,40 +4,43 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {TmdbService} from './tmdb.service';
-import {HttpClientModule} from '@angular/common/http';
-import {AngularFireModule} from '@angular/fire';
-import {environment} from '../environments/environment';
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule,
+import { TmdbService } from './tmdb.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
   MatCheckboxModule,
   MatCardModule,
   MatSidenavModule,
   MatFormFieldModule,
   MatDialogModule,
   MatInputModule,
-  MatMenuModule } from '@angular/material';
-import {MatIconModule} from '@angular/material/icon';
+  MatMenuModule
+} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import { FilmComponent } from './film/film.component';
 import { ListeResultatsRechercheComponent } from './liste-resultats-recherche/liste-resultats-recherche.component';
 import { RechercheComponent } from './recherche/recherche.component';
-import {CreationCompteComponent, CreationCompteDialogComponent} from './creation-compte/creation-compte.component';
+import { CreationCompteComponent, CreationCompteDialogComponent } from './creation-compte/creation-compte.component';
 import { ConnexionComponent, ConnexionDialogComponent } from './connexion/connexion.component';
 
 import { ListsManagerComponent } from './lists-manager/lists-manager.component';
 import { ListeComponent } from './liste/liste.component';
 import { ActorComponent } from './actor/actor.component';
-import {AuthService} from './auth.service';
+import { AuthService } from './auth.service';
 import { FilmsSuggeresComponent } from './films-suggeres/films-suggeres.component';
 import { ActeursPopulairesComponent } from './acteurs-populaires/acteurs-populaires.component';
 
 import { MovieListService } from './movie-list.service';
-import {DialogDeleteListComponent, ListsManagerElementComponent} from './lists-manager-element/lists-manager-element.component';
+import { DialogDeleteListComponent, ListsManagerElementComponent } from './lists-manager-element/lists-manager-element.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListeFilmComponent, DialogDeleteMovieComponent } from './liste-film/liste-film.component';
 import { LogoutComponent } from './logout/logout.component';
+import { FakeScreenComponent } from './fake-screen/fake-screen.component';
 import {OrderBy} from './pipes/orderBy.pipes';
 import {DragAndDropModule} from "angular-draggable-droppable";
 import {ClickOutsideModule} from "ng-click-outside";
@@ -45,12 +48,13 @@ import {ClickOutsideModule} from "ng-click-outside";
 
 
 const appRoutes: Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'search', component: ListeResultatsRechercheComponent},
-  {path: 'creation-compte', component: CreationCompteComponent},
-  {path: 'movie/:id', component: FilmComponent},
-  {path: 'list', component: ListeComponent},
-  {path: 'actor/:id', component: ActorComponent}
+  { path: '', component: DashboardComponent },
+  { path: 'search', component: ListeResultatsRechercheComponent },
+  { path: 'creation-compte', component: CreationCompteComponent },
+  { path: 'movie/:id', component: FilmComponent },
+  { path: 'list', component: ListeComponent },
+  { path: 'actor/:id', component: ActorComponent },
+  { path: 'fakeScreen', component: FakeScreenComponent }
 ];
 
 @NgModule({
@@ -75,12 +79,14 @@ const appRoutes: Routes = [
     ListeFilmComponent,
     DialogDeleteMovieComponent,
     LogoutComponent,
+    FakeScreenComponent,
     OrderBy
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularFireModule.initializeApp( environment.firebase ),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
@@ -100,7 +106,7 @@ const appRoutes: Routes = [
     ClickOutsideModule,
     RouterModule.forRoot(
       appRoutes,
-      {enableTracing: false}
+      { enableTracing: false }
     )
   ],
   exports: [
