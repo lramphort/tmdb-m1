@@ -3,13 +3,29 @@
   <ng-container *ngFor="let g of genresId">{{g}} / </ng-container>
 
   <li *ngFor="let m of currentSearchRes.results">
-    
-    <a routerLink="/movie/{{m.id}}">
+
+    <a>
       <mat-card>
-        <mat-card-header>
+        <mat-card-header routerLink="/movie/{{m.id}}">
           {{m.title}}
         </mat-card-header>
-      </mat-card> 
+
+        <div class="addLists">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon aria-label="list icon">add</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <form (click)="stopPropagation($event)">
+              <button (click)="addToList(m.id, list)" mat-menu-item *ngFor="let list of lists | orderByLastDate">
+                <mat-icon *ngIf="!isInTheList(m.id, list)">check_box_outline_blank</mat-icon>
+                <mat-icon *ngIf="isInTheList(m.id, list)">check_box</mat-icon>
+                <span>{{list.name}}</span>
+              </button>
+            </form>
+          </mat-menu>
+        </div>
+      </mat-card>
     </a>
   </li>
 
@@ -24,5 +40,3 @@
   </li>
 
 </ul>
-
-

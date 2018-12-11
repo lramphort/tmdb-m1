@@ -1,75 +1,75 @@
 <div class="Global" *ngIf="movieId">
 
-  <div class="gauche"  *ngIf="title" >
-      <div class="poster">
-        <img [src]="getPath()" />
-      </div>
+  <div class="gauche" *ngIf="title">
+    <div class="poster">
+      <img [src]="getPath()" />
+    </div>
 
-      <div class="actions">
+    <div class="actions">
 
-          <div class="addLists" *ngIf="isUserLogged">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon aria-label="list icon">add</mat-icon>
+      <div class="addLists" *ngIf="isUserLogged">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon aria-label="list icon">add</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <form (click)="stopPropagation($event)" (submit)="createList()">
+            <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ...">
+
+            <button (click)="addToList(list)" mat-menu-item *ngFor="let list of lists | orderByLastDate">
+              <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
+              <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
+              <span>{{list.name}}</span>
             </button>
-
-            <mat-menu #menu="matMenu">
-                <form (click)="stopPropagation($event)" (submit)="createList()">
-                    <input [(ngModel)]="newListe" name="newListe" matInput placeholder="Nouvelle liste ...">
-                 
-                <button (click)="addToList(list)" mat-menu-item  *ngFor="let list of lists | orderByLastDate">
-                <mat-icon *ngIf="!isInTheList(list)">check_box_outline_blank</mat-icon>
-                <mat-icon *ngIf="isInTheList(list)">check_box</mat-icon>
-                <span>{{list.name}}</span>
-              </button>
-            </form>
-            </mat-menu>
-          </div>
+          </form>
+        </mat-menu>
       </div>
-      <div>
-          <!--<div class="rating">
+    </div>
+    <div>
+      <!--<div class="rating">
                <a href="#5" title="Donner 5 étoiles">☆</a>
                <a href="#4" title="Donner 4 étoiles">☆</a>
                <a href="#3" title="Donner 3 étoiles">☆</a>
                <a href="#2" title="Donner 2 étoiles">☆</a>
                <a href="#1" title="Donner 1 étoile">☆</a>
           </div>-->
-          <div class="note">
-              note : {{vote_average}}
-          </div>
+      <div class="note">
+        note : {{vote_average}}
       </div>
+    </div>
 
-      <div>
-        <!-- ici mettre formulaire laisser un avis -->
-      </div>
+    <div>
+      <!-- ici mettre formulaire laisser un avis -->
+    </div>
     <!-- ici mettre bouton gauche voir un avis -->
     <!-- ici mettre bouton droite "ok !" = on submit du form -->
   </div>
 
 
 
-  <div class="droite"  *ngIf="title">
-      <h1>{{title}}</h1>
-      <ul>
-        <li> Année :                    {{annee.slice(0,4)}} </li>
-        <li> Status :                   {{status}} </li>
-        <li> Compagnies de production :
-            <ng-container *ngFor="let cp of compagnies">
-              {{cp.name}} ,
-            </ng-container>
-        </li>
-        <li> Langues :
-          <ng-container *ngFor="let l of langues">
-            {{l.name}}  ,
-          </ng-container>
-        </li>
-        <li> Revenu :                  {{revenue | currency:'USD':'symbol':'1.0-0'}} </li>
-        <li> Budget :                   {{bugdet | currency:'USD':'symbol':'1.0-0'}} </li>
-        <li> Acteurs :
-            <ng-container *ngFor="let c of cast">
-              {{c.name}} ,
-            </ng-container>
-        </li>
-        <li class="synopsis"> Synopsis :                 {{synopsis}} </li>
-      </ul>
+  <div class="droite" *ngIf="title">
+    <h1>{{title}}</h1>
+    <ul>
+      <li> Année : {{annee.slice(0,4)}} </li>
+      <li> Status : {{status}} </li>
+      <li> Compagnies de production :
+        <ng-container *ngFor="let cp of compagnies">
+          {{cp.name}} ,
+        </ng-container>
+      </li>
+      <li> Langues :
+        <ng-container *ngFor="let l of langues">
+          {{l.name}} ,
+        </ng-container>
+      </li>
+      <li> Revenu : {{revenue | currency:'USD':'symbol':'1.0-0'}} </li>
+      <li> Budget : {{bugdet | currency:'USD':'symbol':'1.0-0'}} </li>
+      <li> Acteurs :
+        <ng-container *ngFor="let c of cast">
+          {{c.name}} ,
+        </ng-container>
+      </li>
+      <li class="synopsis"> Synopsis : {{synopsis}} </li>
+    </ul>
   </div>
 </div>

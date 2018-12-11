@@ -13,6 +13,17 @@ li {
 mat-card {
   margin:0.2cm;
   max-width: 10cm;
+  display: flex;
+  cursor: pointer;
+}
+
+mat-card-header {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.addLists {
+  margin-left: auto;
 }
 
 a {
